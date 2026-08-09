@@ -1,0 +1,6 @@
+# KiCad backups and autosave
+*-backups/
+*.kicad_prl
+fp-info-cache
+~*.*
+.DS_Store
