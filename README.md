@@ -85,6 +85,26 @@ on both faces. Count vias, not layers.
 Leave the board corners clear. Double-sided milling needs four 2mm dowel holes,
 3mm in from the edges, to align the two sides.
 
+## After Konnect creates a file
+
+Konnect writes new files in an older format. It stamps `version 20250610` and
+`generator "konnect"`, while KiCad 10 writes `20260306` for schematics and
+`20260206` for boards.
+
+Upgrade any new file once, before you commit it:
+
+```bash
+kicad-cli sch upgrade <name>.kicad_sch
+kicad-cli pcb upgrade <name>.kicad_pcb
+```
+
+Konnect keeps the version it finds in an existing file, so one upgrade holds for
+every later edit.
+
+Editing an existing file is safe. A round trip over a migrated board kept the
+version, the generator, and every symbol, wire, label, junction and no-connect.
+The output reformats, so expect a large diff with no change in content.
+
 ## Conventions
 
 - One function per block. Two words must name it.
