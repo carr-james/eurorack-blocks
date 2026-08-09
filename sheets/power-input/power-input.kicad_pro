@@ -658,13 +658,18 @@
       {
         "filename": "power-input.kicad_sch",
         "name": "power-input",
-        "uuid": "00000000-0000-0000-0000-000000000000"
+        "uuid": "6f1c29c3-265e-4aa9-b46d-a6f87ca6134a"
       }
     ],
     "used_designators": "",
     "variants": []
   },
-  "sheets": [],
+  "sheets": [
+    [
+      "6f1c29c3-265e-4aa9-b46d-a6f87ca6134a",
+      "power-input"
+    ]
+  ],
   "text_variables": {},
   "tuning_profiles": {
     "meta": {
