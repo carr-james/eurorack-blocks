@@ -105,10 +105,37 @@ Editing an existing file is safe. A round trip over a migrated board kept the
 version, the generator, and every symbol, wire, label, junction and no-connect.
 The output reformats, so expect a large diff with no change in content.
 
+## Three layers
+
+Keep these separate. A block holds function only.
+
+| Layer | Holds | Scope |
+|---|---|---|
+| Block | op-amps, passives, signals on labels | reusable |
+| Panel | jacks, pots, switches, LEDs | one module |
+| Power | the bus header | one module |
+
+A block does not hold panel hardware. There are two reasons.
+
+The panel sets where a jack or a pot goes, not the circuit. A block that holds a
+jack cannot give you its layout back, because the jack must move to suit the
+panel.
+
+A breakout board also does not need the hardware. The breadboard rig already has
+jacks, switches and pots that plug in. A breakout exposes the block signals on
+0.1in headers instead, so no part is bought twice.
+
+Power input is the exception. Its connector is the function, and a bus header is
+not panel hardware.
+
+Some circuits are therefore not blocks. Jack normalling is connector behaviour,
+so it belongs to the panel layer. An attenuator is a pot, so the block is the
+op-amp stage around it and the pot wires in.
+
 ## Conventions
 
 - One function per block. Two words must name it.
-- No connectors. Connectors belong to the breakout.
+- No panel hardware. See "Three layers".
 - Name in `kebab-case` by function: `vca-linear`, not `lm13700-vca`.
 - Version every circuit. See [docs/versioning.md](docs/versioning.md).
 - Write a `README.md` next to every block. See below.
