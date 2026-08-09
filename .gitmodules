@@ -1,0 +1,3 @@
+[submodule "shared"]
+	path = sheets/shared
+	url = git@github.com:carr-james/eurorack-common-library.git
