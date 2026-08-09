@@ -10,24 +10,39 @@ Physical test boards live in
 
 Requires KiCad 10.
 
-## Two reuse mechanisms
+## Reuse mechanism
 
-Use the mechanism that fits the circuit.
+Circuits are hierarchical sheets. This is the only reuse mechanism here.
 
-| | hierarchical sheet | design block |
-|---|---|---|
-| Reuses | schematic | schematic and layout |
-| Link to source | stays linked | may be a copy |
-| Edit propagates | yes | possibly not |
-| Use for | circuits you expect to revise | circuits whose layout you want back |
+A sheet keeps one definition. A project references the sheet file through this
+repo as a submodule. An edit reaches every project that updates the submodule
+pin.
 
-A hierarchical sheet keeps one definition. Projects reference the sheet file
-through this repo as a submodule. An edit reaches every project that updates the
-submodule pin.
+This is proven, not assumed. A parent that referenced this repo's power input
+sheet listed the child components in its netlist, and a value changed in the
+sheet appeared in the parent netlist with no action on the parent. Rails crossed
+the boundary as global nets. Local labels stayed scoped to the sheet.
 
-A design block also returns the layout. It may paste a copy instead of a link,
-so an edit may not reach existing boards. Prefer sheets for circuits you revise
-often. Prefer blocks when the layout is the valuable part.
+### Design blocks are not used
+
+KiCad 9 added schematic design blocks and KiCad 10 added PCB design blocks. They
+are not used here.
+
+They reuse layout, which sheets do not. That is their only advantage. It buys
+nothing until a module reaches layout and hand routing costs real time.
+
+Against them: the docs do not say whether a PCB block can hold layout alone, and
+placing one appears to insert new footprints rather than map onto footprints
+already imported from a netlist. If that is correct, a sheet and a block cannot
+serve the same circuit, so layout reuse costs the live schematic link. KiCad
+10.0.x also has open bug reports against the feature.
+
+Revisit this when hand routing hurts. Test it then: lay out one cluster, save it
+as a PCB design block, place it in a second board that already has its netlist,
+and see whether you get reuse or duplicates.
+
+For a circuit repeated inside one board, such as the four channels of a quad VCA,
+use sheet instances with the `replicate_layout` plugin instead.
 
 ## Layout
 
