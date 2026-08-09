@@ -77,8 +77,13 @@ Through-hole resistors and capacitors are well stocked, so they stay in use.
 SMD is also easier on a milled board: an SMD pad solders from one face, and an
 unplated through-hole pad does not.
 
-Vias cost hand labour. Nothing is plated at home. Each via is a rivet you set or
-a wire you solder on both faces. Route on one layer where you can.
+Boards are double sided. Route on both layers.
+
+Nothing is plated at home, so each via is a rivet you set or a wire you solder
+on both faces. Count vias, not layers.
+
+Leave the board corners clear. Double-sided milling needs four 2mm dowel holes,
+3mm in from the edges, to align the two sides.
 
 ## Conventions
 
