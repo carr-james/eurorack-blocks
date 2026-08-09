@@ -111,3 +111,30 @@ The output reformats, so expect a large diff with no change in content.
 - No connectors. Connectors belong to the breakout.
 - Name in `kebab-case` by function: `vca-linear`, not `lm13700-vca`.
 - Version every circuit. See [docs/versioning.md](docs/versioning.md).
+- Write a `README.md` next to every block. See below.
+
+## Block documentation
+
+Each block holds its own `README.md`. Write it in ASD-STE100 Simplified
+Technical English: short sentences, active voice, present tense, one instruction
+per sentence.
+
+Use these headings:
+
+| Heading | Content |
+|---|---|
+| What it does | One paragraph. State what the block does not do. |
+| Interface | Every net that crosses the boundary, and its direction. |
+| Bill of materials | Reference, value, part. Say if a part is not in stock. |
+| Limits | What the block does not handle, and what it costs you. |
+| Changelog | One entry per version. |
+
+Add other headings when the circuit needs them. The power input block adds
+Connector and Protection.
+
+**The Limits section matters most.** A reader can see the circuit from the
+schematic. They cannot see the trade you made, or the failure you did not guard
+against. Record facts that ERC cannot check, such as diode direction.
+
+[sheets/power-input/README.md](sheets/power-input/README.md) is the reference
+example.
