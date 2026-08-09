@@ -52,7 +52,7 @@ Use `${KIPRJMOD}` relative paths when you consume this repo as a submodule.
 
 ## Design rules
 
-All new work uses `design-rules/house-mill.kicad_dru`.
+All new work uses `eurorack-common-library/design-rules/house-mill.kicad_dru`.
 
 | | Mill (Carvera Air) | JLCPCB |
 |---|---|---|
@@ -70,7 +70,7 @@ Two limits that DRC cannot check:
 
 ## Part selection
 
-1. Use a part you have in stock. Check PartsBox.
+1. Use a part you have in stock. See `eurorack-common-library/docs/preferred-values.md`.
 2. If the value is not in stock, choose SMD.
 
 Through-hole resistors and capacitors are well stocked, so they stay in use.
