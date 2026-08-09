@@ -1,83 +1,88 @@
 # Eurorack Blocks
 
-Reusable circuit blocks — schematic *and* layout — shared across Eurorack module
-projects, plus the house design rules every project inherits.
+Reusable circuits shared across Eurorack projects. Each circuit is defined once,
+in this repo.
 
-This repo holds **circuits**. Parts (symbols, footprints, 3D models, SPICE) live
-in [eurorack-common-library](https://github.com/carr-james/eurorack-common-library),
-and physical breadboard-friendly versions of these circuits live in
+This repo holds circuits. Parts live in
+[eurorack-common-library](https://github.com/carr-james/eurorack-common-library).
+Physical test boards live in
 [eurorack-breakouts](https://github.com/carr-james/eurorack-breakouts).
 
-## Requires KiCad 10
+Requires KiCad 10.
 
-PCB design blocks were added in KiCad 10 — v9 had schematic blocks only. This
-library is not usable on KiCad 9.
+## Two reuse mechanisms
+
+Use the mechanism that fits the circuit.
+
+| | hierarchical sheet | design block |
+|---|---|---|
+| Reuses | schematic | schematic and layout |
+| Link to source | stays linked | may be a copy |
+| Edit propagates | yes | possibly not |
+| Use for | circuits you expect to revise | circuits whose layout you want back |
+
+A hierarchical sheet keeps one definition. Projects reference the sheet file
+through this repo as a submodule. An edit reaches every project that updates the
+submodule pin.
+
+A design block also returns the layout. It may paste a copy instead of a link,
+so an edit may not reach existing boards. Prefer sheets for circuits you revise
+often. Prefer blocks when the layout is the valuable part.
 
 ## Layout
 
 ```
-blocks/eurorack.kicad_blocks/   the design block library (the folder IS the library)
-  <block-name>/                 one folder per block
-    <block-name>.kicad_sch      schematic fragment
-    <block-name>.kicad_pcb      layout fragment
-    <block-name>.json           KiCad's block description — carries the version
-    CHANGELOG.md                what changed, per version
-design-rules/house-mill.kicad_dru   the rules every board here is designed to
-templates/                      starting points for new blocks
-docs/                           conventions, in detail
+sheets/                             hierarchical sheets, one per circuit
+blocks/eurorack.kicad_blocks/       design block library
+design-rules/house-mill.kicad_dru   default rules
+docs/                               conventions
 ```
 
-## Registering the library
+## Register the design block library
 
-Preferences → Manage Design Block Libraries → add:
+Open Preferences. Select Manage Design Block Libraries. Add a library.
 
-| field | value |
+| Field | Value |
 |---|---|
 | Nickname | `Eurorack Blocks` |
-| Library Path | `<this repo>/blocks/eurorack.kicad_blocks` |
+| Library Path | `<repo>/blocks/eurorack.kicad_blocks` |
 | Library Format | `KiCad` |
 
-Prefer a project-relative path (`${KIPRJMOD}/...`) when consuming this repo as a
-submodule, so projects stay portable — the same approach the parts library uses.
+Use `${KIPRJMOD}` relative paths when you consume this repo as a submodule.
 
-## Design rules: mill-safe by default
+## Design rules
 
-Everything here is designed to `design-rules/house-mill.kicad_dru`, which
-targets in-house milling on the Makera Carvera Air:
+All new work uses `design-rules/house-mill.kicad_dru`.
 
-| | mill (house rules) | JLCPCB |
+| | Mill (Carvera Air) | JLCPCB |
 |---|---|---|
-| track / clearance | 0.2mm | ~0.127mm |
-| via diameter | 0.9mm (0.6mm drill) | 0.3mm |
-| plated through-holes | **no** | yes |
+| Track and clearance | 0.2mm | 0.127mm |
+| Via | 0.9mm, unplated | 0.3mm, plated |
+| Layers | 2 | 4 or more |
 
-Mill rules are stricter, so a block that passes them is also fabbable at JLCPCB.
-The reverse is not true — a JLC-dense block cannot be milled.
+Mill rules are stricter. A board that obeys them is also fabbable at JLCPCB. The
+opposite is not true.
 
-Two consequences worth internalising:
+Two limits that DRC cannot check:
 
-**Vias are labour.** Nothing is plated in-house; every via is a rivet you set by
-hand or a wire you solder both sides of. Minimise them. Prefer single-layer
-routing with a back-side pour and a few deliberate stitches over a via-happy
-two-layer layout.
+- Home fabrication gives 2 layers only.
+- Home silkscreen is laser-cured. Small text prints badly. Do not depend on it.
 
-**SMD is easier than through-hole here.** With no plated barrels a through-hole
-pad is only reliably solderable from one face, and you cannot reach the top pad
-under a DIP body. Surface-mount parts solder from one side and need no plating.
-New blocks should be SMD-first; the existing through-hole parts in
-eurorack-common-library remain correct for externally-fabbed Eurorack modules.
+## Part selection
+
+1. Use a part you have in stock. Check PartsBox.
+2. If the value is not in stock, choose SMD.
+
+Through-hole resistors and capacitors are well stocked, so they stay in use.
+SMD is also easier on a milled board: an SMD pad solders from one face, and an
+unplated through-hole pad does not.
+
+Vias cost hand labour. Nothing is plated at home. Each via is a rivet you set or
+a wire you solder on both faces. Route on one layer where you can.
 
 ## Conventions
 
-- **One function per block.** If you cannot name it in two words, it is probably two blocks.
-- **No connectors.** A block is absorbed into a host board. Connectors belong to the breakout.
-- **Name in `kebab-case`**, describing function not implementation: `vca-linear`, not `lm13700-vca`.
-- **Version every block.** See [docs/versioning.md](docs/versioning.md).
-
-## Versioning in one line
-
-Blocks are versioned individually with semver, the version is stamped both in
-the block's JSON and as visible text in the schematic fragment, and each block
-keeps its own `CHANGELOG.md`. The stamp matters: a placed block may be a *copy*
-rather than a live link, so the text in the schematic can be the only surviving
-record of which version a board was built from.
+- One function per block. Two words must name it.
+- No connectors. Connectors belong to the breakout.
+- Name in `kebab-case` by function: `vca-linear`, not `lm13700-vca`.
+- Version every circuit. See [docs/versioning.md](docs/versioning.md).

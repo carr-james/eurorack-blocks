@@ -1,18 +1,8 @@
 (version 1)
 
-# House design rules — in-house milling on the Makera Carvera Air.
-#
-# These are the default rules for anything in this library. They are stricter
-# than JLCPCB on feature size, so a board that passes here is also fabbable
-# externally; the reverse is not true. Design to these unless a board is
-# explicitly JLC-only.
-#
-# Usage: copy next to a board as <project>.kicad_dru, or point Board Setup >
-# Custom Rules at it. Board Setup's own minimums must be raised to match —
-# custom rules can only tighten, never loosen, the built-in constraints.
-#
-# The binding constraint on a milled board is the isolation bit: a 0.2mm corn
-# bit cannot cut a gap narrower than itself, so 0.2mm is a floor, not a target.
+# Mill limits: 0.2mm isolation bit, unplated holes.
+# Copy next to a board as <project>.kicad_dru. Board Setup minimums must match;
+# custom rules can tighten but not loosen them.
 
 (rule "minimum track width"
 	(constraint track_width (min 0.2mm))
@@ -22,9 +12,6 @@
 	(constraint clearance (min 0.2mm))
 	(severity error))
 
-# Vias are not plated here — every one is a hand-set rivet or a soldered wire.
-# 0.9mm outer leaves an annulus around a 0.6mm drill, which is the smallest
-# rivet worth handling. Treat via count as a labour cost, not a free resource.
 (rule "minimum via diameter"
 	(constraint via_diameter (min 0.9mm))
 	(severity error))
@@ -45,8 +32,7 @@
 	(constraint hole_clearance (min 0.25mm))
 	(severity error))
 
-# Deliberately 0: milling the perimeter already removes copper at the edge, and
-# a non-zero value forces the cutter to clear a wider margin than necessary.
+# Perimeter milling clears the edge already.
 (rule "copper to board edge"
 	(constraint edge_clearance (min 0mm))
 	(severity ignore))
