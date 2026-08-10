@@ -2859,7 +2859,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "1d242bc9-a33f-4047-9f61-5b303473ce39")
-		(property "Reference" "?"
+		(property "Reference" "#FLG01"
 			(at 96.52 66.04 0)
 			(hide yes)
 			(show_name no)
@@ -2871,7 +2871,7 @@
 			)
 		)
 		(property "Value" "PWR_FLAG"
-			(at 96.52 73.66 0)
+			(at 96.774 66.04 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -2918,7 +2918,7 @@
 		(instances
 			(project "power-input"
 				(path "/6f1c29c3-265e-4aa9-b46d-a6f87ca6134a"
-					(reference "1")
+					(reference "#FLG01")
 					(unit 1)
 				)
 			)
@@ -3163,7 +3163,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "3bb367de-b39c-4768-8ad0-eb494d28b396")
-		(property "Reference" "?"
+		(property "Reference" "#FLG02"
 			(at 96.52 104.14 0)
 			(hide yes)
 			(show_name no)
@@ -3222,7 +3222,7 @@
 		(instances
 			(project "power-input"
 				(path "/6f1c29c3-265e-4aa9-b46d-a6f87ca6134a"
-					(reference "2")
+					(reference "#FLG02")
 					(unit 1)
 				)
 			)
@@ -3549,7 +3549,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "bab1ea8b-d53d-4450-826d-0104e00978b6")
-		(property "Reference" "?"
+		(property "Reference" "#FLG03"
 			(at 60.96 83.82 0)
 			(hide yes)
 			(show_name no)
@@ -3608,7 +3608,7 @@
 		(instances
 			(project "power-input"
 				(path "/6f1c29c3-265e-4aa9-b46d-a6f87ca6134a"
-					(reference "3")
+					(reference "#FLG03")
 					(unit 1)
 				)
 			)

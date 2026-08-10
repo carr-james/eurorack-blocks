@@ -201,6 +201,28 @@ grep -A6 '(comp' out.net | grep -E 'ref|footprint'
 
 A `PWR_FLAG` has no footprint, and that is correct. Everything else needs one.
 
+## Do not annotate a schematic with kicad-cli
+
+`annotate_schematic` runs `kicad-cli sch annotate`, which gave the `PWR_FLAG`
+symbols the references `1`, `2` and `3`. Eeschema would have written `#FLG01`.
+
+**The `#` prefix is what keeps a symbol out of the bill of materials and off the
+board.** Without it a power flag is a real component with no footprint, and
+Update PCB From Schematic tries to place it.
+
+ERC does not catch this. The check is the netlist:
+
+```bash
+kicad-cli sch export netlist --format kicadsexpr -o out.net <name>.kicad_sch
+grep -A1 '(comp' out.net | grep '(ref'
+```
+
+Every reference listed there should be a real part. Five blocks were committed
+with power flags in the bill of materials before this was found.
+
+Annotate in Eeschema, or set the reference through the API when you place the
+symbol.
+
 ## Konnect writes an old file format
 
 Files it creates carry `version 20250610` and `generator "konnect"`. KiCad 10

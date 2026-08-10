@@ -1778,7 +1778,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "8807388d-41d7-4ad2-9563-09338f827aa2")
-		(property "Reference" "?"
+		(property "Reference" "#FLG01"
 			(at 115.57 95.25 0)
 			(hide yes)
 			(show_name no)
@@ -1837,7 +1837,7 @@
 		(instances
 			(project "regulator-5v"
 				(path "/e63ab04a-af64-4323-93a0-74539e882229"
-					(reference "1")
+					(reference "#FLG01")
 					(unit 1)
 				)
 			)
@@ -2162,7 +2162,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "e24010cb-ee06-4665-aa76-13f0ece307e5")
-		(property "Reference" "?"
+		(property "Reference" "#FLG02"
 			(at 68.58 72.39 0)
 			(hide yes)
 			(show_name no)
@@ -2221,7 +2221,7 @@
 		(instances
 			(project "regulator-5v"
 				(path "/e63ab04a-af64-4323-93a0-74539e882229"
-					(reference "2")
+					(reference "#FLG02")
 					(unit 1)
 				)
 			)
