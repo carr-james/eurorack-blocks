@@ -2,7 +2,7 @@
 
 Conditions an external clock, gate or trigger into a clean CMOS logic level.
 
-Version 1.1.1
+Version 1.1.2
 
 ## What it does
 
@@ -93,8 +93,8 @@ oscillates. The block ties them so it cannot be assembled wrongly.
 
 **Four of six gates are unused.** A module needing two or three conditioned
 inputs should not place this block two or three times, because each copy is a
-whole package. Build a multi-channel variant instead. The sequencer needs a
-clock and a reset, so that variant is worth having.
+whole package. Use `clock-input-3` instead, which fits three channels into one
+CD40106B with nothing tied off.
 
 **The threshold is not adjustable.** It sits wherever the CD40106B puts it,
 between 2.2V and 3.6V. A source whose high is below 3.6V may not trigger. Use a
@@ -110,6 +110,11 @@ a linear regulator cannot sink it. `regulator-5v` carries a bleeder for this.
 [docs/learnings.md](../../docs/learnings.md).
 
 ## Changelog
+
+### 1.1.2
+
+Limits now points at `clock-input-3` for the multi-channel case. Documentation
+only.
 
 ### 1.1.1
 
