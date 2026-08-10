@@ -163,6 +163,10 @@ op-amp stage around it and the pot wires in.
   symbols and need no label.
 - Every part carries a footprint. Check the exported netlist, not the
   schematic. ERC does not check this.
+- **Every integrated circuit gets a 100nF ceramic across its supply pins**, one
+  per package, and one per rail for a split supply. Home boards are two layers
+  with no ground plane, so there is nothing else to hold the rail up during a
+  switching edge. ERC does not check this either.
 - Name in `kebab-case` by function: `vca-linear`, not `lm13700-vca`.
 - Version every circuit. See [docs/versioning.md](docs/versioning.md).
 - Write a `README.md` next to every block. See below.

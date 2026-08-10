@@ -2,7 +2,7 @@
 
 Buffers a control voltage and drives it to a jack.
 
-Version 1.1.0
+Version 1.1.1
 
 ## What it does
 
@@ -20,6 +20,7 @@ The block does not scale, offset, or invert. Put those in a separate block.
 | `CV_OUT` | out | through 1k |
 | `+12VA` | in | global |
 | `-12VA` | in | global |
+| `GND` | in | global, for C1 and C2 |
 
 ## Verified figures
 
@@ -88,8 +89,14 @@ the interface labels come from the parent in real use. See
 | U1 | TL071CP | PDIP-8. `TL071CD` is the SOIC-8 variant |
 | R1 | 1k | DIN0207 |
 | D1, D2 | 1N4148 | DO-35 |
+| C1, C2 | 100nF | ceramic, 2.5mm, supply decoupling, one per rail |
 
 ## Changelog
+
+### 1.1.1
+
+C1 and C2 are local supply decoupling, one per rail. The block now
+consumes `GND`, which it did not before. No circuit change.
 
 ### 1.1.0
 

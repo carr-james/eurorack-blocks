@@ -2,7 +2,7 @@
 
 Sets the range of a control voltage with two board trimmers.
 
-Version 1.0.0
+Version 1.0.1
 
 ## What it does
 
@@ -153,6 +153,7 @@ layout, so it is not in the bill of materials.
 | U1 | TL072IP | PDIP-8, dual JFET op-amp |
 | RV1, RV2 | 10k | Bourns `3296W-1-103LF`, vertical trimmer |
 | R1, R2 | 47k | DIN0207 |
+| C1, C2 | 100nF | ceramic, 2.5mm, supply decoupling, one per rail |
 
 Everything is in stock.
 
@@ -161,6 +162,10 @@ in stock in SOIC-8 with the same pinout, and needs a symbol before this block
 can be built surface mount.
 
 ## Changelog
+
+### 1.0.1
+
+C1 and C2 are local supply decoupling, one per rail. No circuit change.
 
 ### 1.0.0
 

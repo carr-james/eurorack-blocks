@@ -3,7 +3,7 @@
 Counts eight steps from a clock, and passes a token to the next counter so that
 two or more modules make one longer sequence.
 
-Version 1.0.0
+Version 1.0.1
 
 ## What it does
 
@@ -188,6 +188,7 @@ oscillates.
 |---|---|---|
 | U1 | 4017 | DIP-16, CD4017B decade counter |
 | U2 | 4011 | DIP-14, CD4011B quad 2 input NAND |
+| C1, C2 | 100nF | ceramic, 2.5mm, supply decoupling, one per package |
 
 **Neither part is in stock.** Both are needed before this block can be built.
 `4011_SOIC` is in the library for the SOIC-14 version. There is no SOIC symbol
@@ -221,6 +222,10 @@ hierarchical, and a hierarchical label has no parent in a harness. See
 [docs/learnings.md](../../docs/learnings.md).
 
 ## Changelog
+
+### 1.0.1
+
+C1 and C2 are local supply decoupling, one per package. No circuit change.
 
 ### 1.0.0
 

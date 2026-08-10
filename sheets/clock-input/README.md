@@ -2,7 +2,7 @@
 
 Conditions an external clock, gate or trigger into a clean CMOS logic level.
 
-Version 1.1.0
+Version 1.1.1
 
 ## What it does
 
@@ -87,6 +87,7 @@ oscillates. The block ties them so it cannot be assembled wrongly.
 | R1 | 10k | DIN0207 |
 | R2 | 100k | DIN0207 |
 | D1, D2 | 1N4148 | DO-35 |
+| C1 | 100nF | ceramic, 2.5mm, supply decoupling |
 
 ## Limits
 
@@ -109,6 +110,10 @@ a linear regulator cannot sink it. `regulator-5v` carries a bleeder for this.
 [docs/learnings.md](../../docs/learnings.md).
 
 ## Changelog
+
+### 1.1.1
+
+C1 is local supply decoupling across U1. No circuit change.
 
 ### 1.1.0
 

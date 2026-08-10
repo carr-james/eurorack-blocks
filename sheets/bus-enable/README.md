@@ -139,9 +139,9 @@ signal pin is VSS − 0.5V to VDD + 0.5V.
 `CD4066BM96` is in stock in SOIC-14. Use the `4066_SOIC` symbol for a surface
 mount build.
 
-C1 is local supply decoupling across the package. **This is the first block to
-carry it.** The earlier logic blocks have none, which is a gap rather than a
-decision, and matters most on a milled two layer board with no ground plane.
+C1 is local supply decoupling across the package. Every block with an integrated
+circuit now carries one per package, and one per rail for a split supply. See
+the repo README under Conventions.
 
 ## Changelog
 

@@ -2,7 +2,7 @@
 
 Connects one of eight control voltages to a bus, chosen by a one hot select.
 
-Version 1.0.0
+Version 1.0.1
 
 ## What it does
 
@@ -160,11 +160,16 @@ clock rate and is recorded so the figure is not a surprise.
 | Ref | Value | Part |
 |---|---|---|
 | U1, U2 | 4066 | DIP-14, CD4066B quad bilateral switch |
+| C1, C2 | 100nF | ceramic, 2.5mm, supply decoupling, one per package |
 
 `CD4066BM96` is in stock in SOIC-14. Use the `4066_SOIC` symbol for a surface
 mount build.
 
 ## Changelog
+
+### 1.0.1
+
+C1 and C2 are local supply decoupling, one per package. No circuit change.
 
 ### 1.0.0
 
