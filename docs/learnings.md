@@ -73,6 +73,52 @@ Konnect places and moves symbols but cannot move a symbol's Reference or Value
 text. Field text is what collides, so label overlap cannot be fixed through the
 API. Dragging in Eeschema takes seconds and several API passes did not.
 
+## Multi-unit parts and block size
+
+A block that uses half a dual op-amp wastes the other half. Packing the spare
+from another block does not work: two sheets each declare unit A, annotation
+gives `U1A` and `U2A`, and pairing them by hand makes the sheets share a
+reference. They stop being independently reusable, and every consuming module
+has to redo the pairing.
+
+Rules that avoid the problem:
+
+1. Match the block to the package. A dual op-amp wants a two channel block. A
+   quad wants four.
+2. If one function needs its own block, use a single channel part. Block equals
+   package equals function.
+3. Never leave an unused op-amp input floating. It oscillates and puts noise on
+   the rails.
+
+A block built only from discrete parts has no package to share, so this does not
+apply. Place it as many times as you like. Prefer discrete or single channel
+parts in small blocks.
+
+Surface mount helps. A single op-amp in SOT-23-5 takes less area than half a
+SOIC-8, so a single channel part costs less board space than a packed dual.
+
+## Ask what the circuit needs before reaching for an op-amp
+
+The first gate output used a TL072 to reach +10V. It did not need one. A CMOS
+output drives a Eurorack gate input directly, because the input is near 100k and
+the standard level is +5V.
+
+Removing the op-amp removed the spare half problem with it, and the block became
+three discrete parts that can be placed eight times for per-step triggers.
+
+Series resistance alone is not protection. A patch cable can inject a rail
+voltage. Clamp diodes to the rail and to ground carry that current instead of the
+chip pin.
+
+## Update the submodule after you change the library
+
+Adding a symbol to `eurorack-common-library` does not reach a project. Projects
+resolve the library through `sheets/shared`, which is pinned to a commit.
+
+ERC reports `Symbol not found in symbol library`. This has happened three times.
+
+Commit and push the library, then pull in the submodule, then re-run ERC.
+
 ## Corrections
 
 Entries that were wrong, kept so the same mistake is not repeated.

@@ -1,69 +1,88 @@
 # Gate output
 
-Drives a Eurorack gate or trigger output from a CMOS logic level.
+Protects and drives a +5V Eurorack gate or trigger from a CMOS logic output.
 
-Version 1.0.0
+Version 2.0.0
 
 ## What it does
 
-The block takes a 0V to +5V logic signal and gives 0V to +10V at the output. A
-series resistor protects the op-amp against a short to ground or to a rail. The
-block does not invert, and it does not shape the edge.
+The block passes a CMOS logic signal to a jack. R1 limits the current if the
+output is shorted. D1 and D2 clamp the pin if a patch cable feeds a rail voltage
+back in.
+
+The block does not amplify, invert, or shape the edge. The output level equals
+the +5V rail.
 
 ## Interface
 
 | Net | Direction | Notes |
 |---|---|---|
-| `GATE_IN` | in | 0V to +5V CMOS level |
-| `GATE_OUT` | out | 0V to +10V through 1k |
-| `+12VA` | in | global |
-| `-12VA` | in | global |
+| `GATE_IN` | in | 0V to +5V from a CMOS output |
+| `GATE_OUT` | out | 0V to +5V through 1k |
+| `+5V` | in | global, sets the clamp level |
 | `GND` | in | global |
 
-## How it works
+## Why there is no op-amp
 
-U1 is a non-inverting amplifier. R1 and R2 set the gain:
+A CMOS output drives a Eurorack gate input directly. A gate input is high
+impedance, near 100k, and triggers near +2.5V. A CD4017 output sources about 1mA
+at +5V, which is far more than the load needs.
 
-```
-gain = 1 + R1 / R2 = 1 + 100k / 100k = 2
-```
++5V is the Doepfer gate level. Almost every module accepts it.
 
-A +5V input therefore gives +10V out. R3 sits in series with the output.
+Use a different block if you need +10V. An op-amp or a transistor stage can
+raise the level. Do not add one here.
+
+## Protection
+
+R1 alone is not enough. A patch cable can put +12V or -12V on the output. Through
+1k that is 12mA into the CMOS pin, and the absolute maximum for a 4000 series pin
+is 10mA.
+
+D1 and D2 carry that current instead:
+
+| Fault | Path |
+|---|---|
+| Output above +5.6V | D1 conducts to the +5V rail |
+| Output below -0.6V | D2 conducts from GND |
+
+The clamps sit on the CMOS side of R1. R1 then limits the fault current into the
+diodes as well as into the chip. A 1N4148 passes 200mA, so it has a wide margin.
 
 ## Bill of materials
 
 | Ref | Value | Part |
 |---|---|---|
-| U1 | TL072IP | DIP-8, one half used |
-| R1, R2 | 100k | DIN0207 |
-| R3 | 1k | DIN0207 |
+| R1 | 1k | DIN0207 |
+| D1, D2 | 1N4148 | DO-35 |
 
-All parts are in stock.
+All parts are in stock. The block holds no multi-unit part, so you can place it
+as many times as you need. Eight per-step triggers cost eight copies.
 
 ## Limits
 
-**U1 has a spare half.** The block uses one of the two amplifiers. The module
-owns the other. Give it to another block, or tie it as a follower with its input
-at ground. Never leave the inputs floating: an unused half can oscillate and put
-noise on the rails.
+**The output is +5V, not +10V.** A module with a high trigger threshold may not
+respond. Measure before you assume.
 
-**The output is +10V, not +5V.** Most Eurorack gate inputs accept either. Change
-R1 to match R2 for unity gain if a +5V gate is wanted.
+**R1 sets the output impedance.** 1k against a 100k input loses one percent. A
+load below about 10k pulls the level down.
 
-**A TL072 does not reach the rails.** The output stops about 1.5V short, so +10V
-from a +12V rail is close to the limit. It holds at light load. A heavy load
-pulls it down.
+**The clamps protect the chip, not the patch.** A cable that shorts two outputs
+together is survivable. A cable carrying a rail voltage is clamped. Neither case
+is guaranteed safe for the module at the other end.
 
-**There is no output protection beyond R3.** R3 survives a short to ground. It
-does not protect against a patch cable feeding a rail voltage back in. Add a
-clamp if that risk matters.
-
-**ERC in this harness reports warnings, not errors.** The rails, the input and
-the interface labels come from the parent in real use. See
-[docs/learnings.md](../../docs/learnings.md).
+**ERC in this harness reports warnings, not errors.** `GATE_OUT` touches one pin
+because it is an interface. See [docs/learnings.md](../../docs/learnings.md).
 
 ## Changelog
 
+### 2.0.0
+
+Removed the TL072. A +5V gate needs no op-amp, and the op-amp version wasted
+half a package. Added D1 and D2 clamps, which the first version did not have.
+
+Breaking: the block now consumes `+5V` instead of `+12VA` and `-12VA`.
+
 ### 1.0.0
 
-First version. Non-inverting gain of 2 with a series output resistor.
+First version. TL072 non-inverting gain of 2 for a +10V output.
