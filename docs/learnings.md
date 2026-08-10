@@ -26,6 +26,53 @@ This rule exists because it was broken. `gate-output` was committed with a 1k
 series resistor sized from memory. The CD4017B datasheet gives `DC INPUT
 CURRENT, ANY ONE INPUT` as ±10mA, and 12V through 1k is 12mA, over the limit.
 
+## Pattern: jack interface
+
+Every net that reaches a jack needs protection, whether it is an input or an
+output. A patch cable can apply any voltage in the case to either.
+
+The circuit is the same shape every time: a series resistor, and two clamp
+diodes to the rails of the part being protected. An input adds a pull-down.
+
+**The values are not the same every time.** Derive them per block:
+
+1. **Series resistor.** Take the absolute maximum pin current from the
+   datasheet. Divide the worst injected voltage by it. Assume the clamps do
+   nothing. For an input you can go much higher, because an input draws no
+   current, which also lowers the fault current.
+2. **Clamps.** To the rails of the part you are protecting, not to whichever
+   rail is nearby.
+3. **Pull-down.** Inputs only, so an unpatched jack reads as a defined state.
+   Keep it much larger than the series resistor, or the divider will drop a
+   valid signal below the threshold.
+4. **Cite the datasheet** in the block README, by document number.
+
+Worked examples:
+
+| Block | Series R | Clamps | Why |
+|---|---|---|---|
+| `gate-output` | 2k2 | +5V, GND | CD4017B pin limit is 10mA, so 12V needs 1k2 or more |
+| `cv-output` | 1k | +12VA, -12VA | TL071 output is short-circuit protected, so R is only isolation |
+| `clock-input` | 10k | +5V, GND | an input draws nothing, so a high value costs nothing |
+
+### Do not factor this into a shared block
+
+It looks repeated, and the instinct to remove the repetition is wrong here.
+
+The values differ per part, and a KiCad hierarchical sheet cannot be
+parameterised. There is no way to pass a resistor value or a rail into a sheet
+instance, so a configurable protection block is not possible. Separate variants
+per rail and per value would give the same number of artifacts with none of the
+benefit.
+
+A separate protection block would also make the library unsafe by default,
+because it can be left out. A block that carries its own protection cannot be
+assembled wrongly.
+
+The reusable thing is this pattern, not the components. Do not copy values
+between blocks. Copying the 2k2 from `gate-output` into `cv-output` would have
+doubled the output impedance of a CV output for no reason.
+
 ## Protection diodes do not divert what you assume
 
 An external 1N4148 across a CMOS pin sits in parallel with the on-chip
