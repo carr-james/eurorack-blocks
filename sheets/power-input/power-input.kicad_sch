@@ -2918,7 +2918,7 @@
 		(instances
 			(project "power-input"
 				(path "/6f1c29c3-265e-4aa9-b46d-a6f87ca6134a"
-					(reference "?")
+					(reference "1")
 					(unit 1)
 				)
 			)
@@ -3222,7 +3222,7 @@
 		(instances
 			(project "power-input"
 				(path "/6f1c29c3-265e-4aa9-b46d-a6f87ca6134a"
-					(reference "?")
+					(reference "2")
 					(unit 1)
 				)
 			)
@@ -3259,7 +3259,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Eurorack Common:CP_Radial_D5.0mm_H11.0mm_P2.00mm"
 			(at 109.22 76.2 0)
 			(hide yes)
 			(show_name no)
@@ -3413,7 +3413,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Eurorack Common:CP_Radial_D5.0mm_H11.0mm_P2.00mm"
 			(at 109.22 101.6 0)
 			(hide yes)
 			(show_name no)
@@ -3491,7 +3491,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Eurorack Common:D_DO-41_SOD81_P7.62mm_Horizontal"
 			(at 88.9 76.2 0)
 			(hide yes)
 			(show_name no)
@@ -3608,7 +3608,7 @@
 		(instances
 			(project "power-input"
 				(path "/6f1c29c3-265e-4aa9-b46d-a6f87ca6134a"
-					(reference "?")
+					(reference "3")
 					(unit 1)
 				)
 			)
@@ -3645,7 +3645,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Eurorack Common:D_DO-41_SOD81_P7.62mm_Horizontal"
 			(at 88.9 101.6 0)
 			(hide yes)
 			(show_name no)
@@ -3723,7 +3723,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Eurorack Common:Eurorack Power Header (10 pin)"
 			(at 40.64 88.9 0)
 			(hide yes)
 			(show_name no)

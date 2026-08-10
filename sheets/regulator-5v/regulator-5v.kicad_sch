@@ -1837,7 +1837,7 @@
 		(instances
 			(project "regulator-5v"
 				(path "/e63ab04a-af64-4323-93a0-74539e882229"
-					(reference "?")
+					(reference "1")
 					(unit 1)
 				)
 			)
@@ -2221,7 +2221,7 @@
 		(instances
 			(project "regulator-5v"
 				(path "/e63ab04a-af64-4323-93a0-74539e882229"
-					(reference "?")
+					(reference "2")
 					(unit 1)
 				)
 			)
