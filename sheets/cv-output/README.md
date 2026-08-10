@@ -2,7 +2,7 @@
 
 Buffers a control voltage and drives it to a jack.
 
-Version 1.0.0
+Version 1.1.0
 
 ## What it does
 
@@ -90,6 +90,12 @@ the interface labels come from the parent in real use. See
 | D1, D2 | 1N4148 | DO-35 |
 
 ## Changelog
+
+### 1.1.0
+
+`CV_IN` and `CV_OUT` are hierarchical labels. They were plain net labels, which
+are scoped to the sheet and never become sheet pins, so a parent module could
+not reach either of them. No circuit change.
 
 ### 1.0.0
 

@@ -2,7 +2,7 @@
 
 Eurorack power entry with reverse polarity protection and rail bulk decoupling.
 
-Version 1.0.0
+Version 1.0.1
 
 ## What it does
 
@@ -91,6 +91,11 @@ that holds the IC.
 need them.
 
 ## Changelog
+
+### 1.0.1
+
+Assigned footprints. Every part was committed without one, so the block could
+not reach a board. No circuit change.
 
 ### 1.0.0
 

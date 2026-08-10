@@ -137,8 +137,19 @@ Two exceptions stay as they are:
   its own.
 - Internal nets. A plain label is correct there, and scoping is what you want.
 
-`power-input`, `gate-output`, `cv-output`, `clock-input` and `regulator-5v` were
-built with plain labels. They need converting before any module uses them.
+`gate-output`, `cv-output` and `clock-input` were built with plain labels and
+have been converted. `power-input` needed no change, because its interface is
+the header and the global rails, and its two labels sit between the header and
+the diodes. `regulator-5v` has no labels at all.
+
+This is proven, not assumed. A scratch parent linked `clock-input` as a
+hierarchical sheet, `import_sheet_pins` produced `CLK_IN` and `CLK_OUT`, and the
+parent netlist listed the child components with the two nets scoped as
+`/Clock input/CLK_IN` and `/Clock input/CLK_OUT`. The same test on the plain
+label version produced no sheet pins.
+
+Annotate in the parent afterwards. Linking a sheet re-paths every symbol
+instance, and a power flag comes through with a `?` reference until you do.
 
 ## A self-terminating pulse is not a pulse
 
@@ -174,6 +185,21 @@ Set the footprint after every placement:
 ```
 edit_schematic_component(reference=..., footprint="Eurorack Common:...")
 ```
+
+Two blocks were committed without it and nobody noticed, because ERC does not
+check footprints. `power-input` had none on any part, and `clock-input` had none
+on U1.
+
+Check the exported netlist, not the schematic. A multi-unit part carries the
+footprint on unit 1 only, so the schematic looks half empty while the netlist is
+correct:
+
+```bash
+kicad-cli sch export netlist --format kicadsexpr -o out.net <name>.kicad_sch
+grep -A6 '(comp' out.net | grep -E 'ref|footprint'
+```
+
+A `PWR_FLAG` has no footprint, and that is correct. Everything else needs one.
 
 ## Konnect writes an old file format
 

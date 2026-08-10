@@ -157,6 +157,12 @@ op-amp stage around it and the pot wires in.
 
 - One function per block. Two words must name it.
 - No panel hardware. See "Three layers".
+- Every net that crosses the boundary is a **hierarchical label**, with a shape
+  of `input`, `output` or `bidirectional`. A plain net label is scoped to the
+  sheet and gives the block no interface at all. Global rails cross on power
+  symbols and need no label.
+- Every part carries a footprint. Check the exported netlist, not the
+  schematic. ERC does not check this.
 - Name in `kebab-case` by function: `vca-linear`, not `lm13700-vca`.
 - Version every circuit. See [docs/versioning.md](docs/versioning.md).
 - Write a `README.md` next to every block. See below.

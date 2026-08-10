@@ -2,7 +2,7 @@
 
 Protects and drives a +5V Eurorack gate or trigger from a CMOS logic output.
 
-Version 2.0.0
+Version 2.2.0
 
 ## What it does
 
@@ -113,6 +113,14 @@ is guaranteed safe for the module at the other end.
 because it is an interface. See [docs/learnings.md](../../docs/learnings.md).
 
 ## Changelog
+
+### 2.2.0
+
+`GATE_IN` and `GATE_OUT` are hierarchical labels. They were plain net labels,
+which are scoped to the sheet and never become sheet pins, so a parent module
+could not reach either of them. No circuit change.
+
+Header version was 2.0.0 while the changelog said 2.1.0. Corrected.
 
 ### 2.1.0
 

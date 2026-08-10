@@ -2,7 +2,7 @@
 
 Conditions an external clock, gate or trigger into a clean CMOS logic level.
 
-Version 1.0.0
+Version 1.1.0
 
 ## What it does
 
@@ -109,6 +109,16 @@ a linear regulator cannot sink it. `regulator-5v` carries a bleeder for this.
 [docs/learnings.md](../../docs/learnings.md).
 
 ## Changelog
+
+### 1.1.0
+
+`CLK_IN` and `CLK_OUT` are hierarchical labels. They were plain net labels,
+which are scoped to the sheet and never become sheet pins, so a parent module
+could not reach either of them.
+
+Assigned the DIP-14 footprint to U1, which was committed without one.
+
+No circuit change.
 
 ### 1.0.0
 
