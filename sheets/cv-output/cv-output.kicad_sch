@@ -2,10 +2,177 @@
   (version 20260306)
   (generator "eeschema")
   (generator_version "10.0")
-  (uuid "0326d8ab-cd64-47ed-90bf-a8c76da095f1")
+  (uuid "e7e0ad1e-d58b-4de9-b1ac-54702c08eda0")
   (paper "A4")
 
   (lib_symbols
+    (symbol "Eurorack Common:TL071"
+      (pin_names
+        (offset 0.127))
+      (exclude_from_sim no)
+      (in_bom yes)
+      (on_board yes)
+      (in_pos_files yes)
+      (duplicate_pin_numbers_are_jumpers no)
+      (property "Reference" "U"
+        (at 0 6.35 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (effects
+          (font
+            (size 1.27 1.27))
+          (justify left)))
+      (property "Value" "TL071"
+        (at 0 3.81 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (effects
+          (font
+            (size 1.27 1.27))
+          (justify left)))
+      (property "Footprint" "Eurorack Common:DIP-8_W7.62mm"
+        (at 1.27 1.27 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "Datasheet" "http://www.ti.com/lit/ds/symlink/tl071.pdf"
+        (at 3.81 3.81 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "Description" "Single JFET-input operational amplifier, DIP-8"
+        (at 0 0 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "ki_keywords" "single opamp"
+        (at 0 0 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "ki_fp_filters" "SOIC*3.9x4.9mm*P1.27mm* DIP*W7.62mm* TSSOP*3x3mm*P0.65mm*"
+        (at 0 0 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (symbol "TL071_0_1"
+        (polyline
+          (pts
+            (xy -5.08 5.08)
+            (xy 5.08 0)
+            (xy -5.08 -5.08)
+            (xy -5.08 5.08))
+          (stroke
+            (width 0.254)
+            (type default))
+          (fill
+            (type background))))
+      (symbol "TL071_1_1"
+        (pin input line
+          (at 0 -7.62 90)
+          (length 5.08)
+          (name "NULL"
+            (effects
+              (font
+                (size 0.508 0.508))))
+          (number "1"
+            (effects
+              (font
+                (size 1.27 1.27)))))
+        (pin input line
+          (at -7.62 -2.54 0)
+          (length 2.54)
+          (name "-"
+            (effects
+              (font
+                (size 1.27 1.27))))
+          (number "2"
+            (effects
+              (font
+                (size 1.27 1.27)))))
+        (pin input line
+          (at -7.62 2.54 0)
+          (length 2.54)
+          (name "+"
+            (effects
+              (font
+                (size 1.27 1.27))))
+          (number "3"
+            (effects
+              (font
+                (size 1.27 1.27)))))
+        (pin power_in line
+          (at -2.54 -7.62 90)
+          (length 3.81)
+          (name "V-"
+            (effects
+              (font
+                (size 1.27 1.27))))
+          (number "4"
+            (effects
+              (font
+                (size 1.27 1.27)))))
+        (pin input line
+          (at 2.54 -7.62 90)
+          (length 6.35)
+          (name "NULL"
+            (effects
+              (font
+                (size 0.508 0.508))))
+          (number "5"
+            (effects
+              (font
+                (size 1.27 1.27)))))
+        (pin output line
+          (at 7.62 0 180)
+          (length 2.54)
+          (name ""
+            (effects
+              (font
+                (size 1.27 1.27))))
+          (number "6"
+            (effects
+              (font
+                (size 1.27 1.27)))))
+        (pin power_in line
+          (at -2.54 7.62 270)
+          (length 3.81)
+          (name "V+"
+            (effects
+              (font
+                (size 1.27 1.27))))
+          (number "7"
+            (effects
+              (font
+                (size 1.27 1.27)))))
+        (pin no_connect line
+          (at 0 2.54 270)
+          (length 2.54)
+          (hide yes)
+          (name "NC"
+            (effects
+              (font
+                (size 1.27 1.27))))
+          (number "8"
+            (effects
+              (font
+                (size 1.27 1.27))))))
+      (embedded_fonts no))
     (symbol "Eurorack Common:R_DIN0207"
       (pin_numbers
         (hide yes))
@@ -237,7 +404,7 @@
               (font
                 (size 1.27 1.27))))))
       (embedded_fonts no))
-    (symbol "power:+5V"
+    (symbol "power:+12VA"
       (power global)
       (pin_numbers
         (hide yes))
@@ -257,7 +424,7 @@
         (effects
           (font
             (size 1.27 1.27))))
-      (property "Value" "+5V"
+      (property "Value" "+12VA"
         (at 0 3.556 0)
         (show_name no)
         (do_not_autoplace no)
@@ -280,7 +447,7 @@
         (effects
           (font
             (size 1.27 1.27))))
-      (property "Description" "Power symbol creates a global label with name \"+5V\""
+      (property "Description" "Power symbol creates a global label with name \"+12VA\""
         (at 0 0 0)
         (show_name no)
         (do_not_autoplace no)
@@ -296,7 +463,7 @@
         (effects
           (font
             (size 1.27 1.27))))
-      (symbol "+5V_0_1"
+      (symbol "+12VA_0_1"
         (polyline
           (pts
             (xy -0.762 1.27)
@@ -324,7 +491,7 @@
             (type default))
           (fill
             (type none))))
-      (symbol "+5V_1_1"
+      (symbol "+12VA_1_1"
         (pin power_in line
           (at 0 0 90)
           (length 0)
@@ -337,7 +504,7 @@
               (font
                 (size 1.27 1.27))))))
       (embedded_fonts no))
-    (symbol "power:GND"
+    (symbol "power:-12VA"
       (power global)
       (pin_numbers
         (hide yes))
@@ -350,15 +517,15 @@
       (in_pos_files yes)
       (duplicate_pin_numbers_are_jumpers no)
       (property "Reference" "#PWR"
-        (at 0 -6.35 0)
+        (at 0 -3.81 0)
         (show_name no)
         (do_not_autoplace no)
         (hide yes)
         (effects
           (font
             (size 1.27 1.27))))
-      (property "Value" "GND"
-        (at 0 -3.81 0)
+      (property "Value" "-12VA"
+        (at 0 3.556 0)
         (show_name no)
         (do_not_autoplace no)
         (effects
@@ -380,7 +547,7 @@
         (effects
           (font
             (size 1.27 1.27))))
-      (property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+      (property "Description" "Power symbol creates a global label with name \"-12VA\""
         (at 0 0 0)
         (show_name no)
         (do_not_autoplace no)
@@ -396,23 +563,9 @@
         (effects
           (font
             (size 1.27 1.27))))
-      (symbol "GND_0_1"
-        (polyline
-          (pts
-            (xy 0 0)
-            (xy 0 -1.27)
-            (xy 1.27 -1.27)
-            (xy 0 -2.54)
-            (xy -1.27 -1.27)
-            (xy 0 -1.27))
-          (stroke
-            (width 0)
-            (type default))
-          (fill
-            (type none))))
-      (symbol "GND_1_1"
+      (symbol "-12VA_0_0"
         (pin power_in line
-          (at 0 0 270)
+          (at 0 0 90)
           (length 0)
           (name ""
             (effects
@@ -422,6 +575,20 @@
             (effects
               (font
                 (size 1.27 1.27))))))
+      (symbol "-12VA_0_1"
+        (polyline
+          (pts
+            (xy 0 0)
+            (xy 0 1.27)
+            (xy 0.762 1.27)
+            (xy 0 2.54)
+            (xy -0.762 1.27)
+            (xy 0 1.27))
+          (stroke
+            (width 0)
+            (type default))
+          (fill
+            (type outline))))
       (embedded_fonts no))
     (symbol "power:PWR_FLAG"
       (power global)
@@ -511,352 +678,590 @@
       (embedded_fonts no)))
 
   (junction
-    (at 95.25 72.39)
+    (at 127 88.9)
     (diameter 0)
-    (uuid "b5106587-6cd5-4462-ad87-3207c3dc4885"))
+    (uuid "a82f251d-8d53-4847-aa12-45a7c2941e66"))
 
   (junction
-    (at 95.25 72.39)
+    (at 127 88.9)
     (diameter 0)
-    (uuid "98fdc707-6c56-4a00-b896-18bd8a60d77b"))
+    (uuid "cdb78b88-3d98-4313-95fe-c771c8253288"))
 
   (junction
-    (at 95.25 72.39)
+    (at 127 88.9)
     (diameter 0)
-    (uuid "976f2f70-1e32-4b80-886f-24075dfda629"))
+    (uuid "8b70f880-58b3-49c9-828a-1ba3cfaf7664"))
 
   (junction
-    (at 95.25 106.68)
+    (at 127 88.9)
     (diameter 0)
-    (uuid "daaf6ccc-6901-4aa8-b373-50a380dcd199"))
+    (uuid "47fb2ce5-4028-46c0-9f0b-d7b10da659d1"))
+
+  (junction
+    (at 127 88.9)
+    (diameter 0)
+    (uuid "9b634151-2753-49d4-9afe-ce5c8f8e9345"))
+
+  (junction
+    (at 127 88.9)
+    (diameter 0)
+    (uuid "1eb829c6-4776-48e9-8d44-cfe424c82c74"))
+
+  (junction
+    (at 127 88.9)
+    (diameter 0)
+    (uuid "1cfb5942-be3e-402c-9275-f0e3bcea88d7"))
+
+  (junction
+    (at 127 88.9)
+    (diameter 0)
+    (uuid "7bb3b147-5653-40b4-8805-93f405b8cb44"))
+
+  (junction
+    (at 127 88.9)
+    (diameter 0)
+    (uuid "ff264e74-309a-4d2a-ba63-42ec40195ea1"))
+
+  (junction
+    (at 127 88.9)
+    (diameter 0)
+    (uuid "07a4bd6c-f69d-40d9-b158-3b7734e12880"))
+
+  (junction
+    (at 127 88.9)
+    (diameter 0)
+    (uuid "30d2c2e5-3b50-48b6-9cb4-5b30ecfb3a0d"))
+
+  (junction
+    (at 127 88.9)
+    (diameter 0)
+    (uuid "5f1828a2-b336-4098-a3c0-4dccca23f0cf"))
+
+  (junction
+    (at 127 88.9)
+    (diameter 0)
+    (uuid "d2dac69f-c635-405f-80a6-e43a4236954c"))
+
+  (junction
+    (at 127 88.9)
+    (diameter 0)
+    (uuid "501195a7-939f-4f50-9f64-5021fc30b8c3"))
+
+  (junction
+    (at 111.76 78.74)
+    (diameter 0)
+    (uuid "7888ce74-4c4b-4fb8-a3ce-dcd812ff8a88"))
+
+  (junction
+    (at 127 88.9)
+    (diameter 0)
+    (uuid "6d3fd5b7-0d6a-46b9-87dc-553051862a51"))
+
+  (junction
+    (at 111.76 78.74)
+    (diameter 0)
+    (uuid "c8e2d255-229d-431f-a23c-186d36ca665b"))
+
+  (junction
+    (at 127 88.9)
+    (diameter 0)
+    (uuid "eebff4c8-38dd-4341-8f16-32cbd646d074"))
+
+  (junction
+    (at 111.76 78.74)
+    (diameter 0)
+    (uuid "6b4908bb-cd75-4e7d-91d7-935177560fb7"))
+
+  (junction
+    (at 111.76 99.06)
+    (diameter 0)
+    (uuid "659acc60-d5aa-4d1f-8a1a-c4edf89ad7d6"))
+
+  (no_connect
+    (at 114.3 96.52)
+    (uuid "8eaad661-f151-4951-ad39-2fa7164dade2"))
+
+  (no_connect
+    (at 116.84 96.52)
+    (uuid "eaaac38a-0ffd-4923-8e3a-5d8d3b540948"))
+
+  (no_connect
+    (at 114.3 86.36)
+    (uuid "63c4095f-32f3-4c03-ac05-4784e9c8a40e"))
 
   (wire
     (pts
-      (xy 95.25 69.85)
-      (xy 95.25 74.93))
-    (uuid "842580ca-ec38-4ac6-b6cd-ce08f18122b3"))
+      (xy 121.92 88.9)
+      (xy 129.54 88.9))
+    (uuid "93e99418-be79-482e-bdf1-6b8ac626e2d4"))
 
   (wire
     (pts
-      (xy 95.25 82.55)
-      (xy 95.25 88.9))
-    (uuid "04721f92-8ea9-4142-be50-f9745ad1bfc0"))
+      (xy 127 86.36)
+      (xy 127 88.9))
+    (uuid "69cb4871-f120-47a6-9e43-c35c6a7a9f7f"))
 
   (wire
     (pts
-      (xy 95.25 88.9)
-      (xy 95.25 95.25))
-    (uuid "df72c4f0-5ba6-4c69-ba82-4c77f86a5e3b"))
+      (xy 127 88.9)
+      (xy 127 91.44))
+    (uuid "750c9e61-a266-410a-bf99-5376627f47fd"))
 
   (wire
     (pts
-      (xy 95.25 102.87)
-      (xy 95.25 109.22))
-    (uuid "4cd1f551-3fc0-485e-a936-d0cfff7bcbd4"))
+      (xy 121.92 88.9)
+      (xy 121.92 104.14))
+    (uuid "3d6c35b7-5c6d-4b6a-98ba-ae48ea63f403"))
 
   (wire
     (pts
-      (xy 95.25 88.9)
-      (xy 101.6 88.9))
-    (uuid "4d83a0c9-4037-49cf-bc72-9bea0dc8e3e3"))
+      (xy 121.92 104.14)
+      (xy 102.87 104.14))
+    (uuid "f43c09cb-ae3d-4d12-8979-117fb6fd2e79"))
 
   (wire
     (pts
-      (xy 95.25 88.9)
-      (xy 82.55 88.9))
-    (uuid "bbb00797-516b-4f7c-a6c7-b4f4f9941939"))
+      (xy 102.87 104.14)
+      (xy 102.87 91.44))
+    (uuid "5c69a605-0e2b-42a6-b662-1ee7201f0a93"))
 
   (wire
     (pts
-      (xy 109.22 88.9)
-      (xy 121.92 88.9))
-    (uuid "f9c09510-26a2-4d93-93a8-0ccf6dd1f34d"))
+      (xy 102.87 91.44)
+      (xy 106.68 91.44))
+    (uuid "1d746abc-90f9-4b68-b034-ca8f103afe0d"))
 
   (wire
     (pts
-      (xy 85.09 69.85)
-      (xy 85.09 72.39))
-    (uuid "c1b78dde-a11c-4f9d-98b8-85d98622d663"))
+      (xy 111.76 76.2)
+      (xy 111.76 81.28))
+    (uuid "2ea40cb2-4a6a-447b-80bb-a80612b8dd98"))
 
   (wire
     (pts
-      (xy 85.09 72.39)
-      (xy 95.25 72.39))
-    (uuid "24f4cc4e-e763-4b6c-a3dd-0fe13acc7b90"))
+      (xy 111.76 96.52)
+      (xy 111.76 101.6))
+    (uuid "4996689d-a65f-4825-8761-dc083908a4f7"))
 
   (wire
     (pts
-      (xy 85.09 109.22)
-      (xy 85.09 106.68))
-    (uuid "b32b7d99-2cab-46e2-92b4-1ea7baf7ba80"))
+      (xy 127 74.93)
+      (xy 127 78.74))
+    (uuid "10d5842c-ba2a-451c-825c-badba3eb3c69"))
 
   (wire
     (pts
-      (xy 85.09 106.68)
-      (xy 95.25 106.68))
-    (uuid "b592133f-bfb5-4e8f-a496-29457482ffca"))
+      (xy 127 99.06)
+      (xy 127 102.87))
+    (uuid "eb593310-6dd2-4d00-848a-b3f5d2d6cd47"))
 
-  (label "GATE_IN"
-    (at 82.55 88.9 180)
-    (uuid "32744735-29af-46ac-aaa5-a465283b3054"))
+  (wire
+    (pts
+      (xy 106.68 86.36)
+      (xy 93.98 86.36))
+    (uuid "9f459509-c6c8-4986-b6f0-aae5f7112494"))
 
-  (label "GATE_OUT"
-    (at 121.92 88.9 0)
-    (uuid "616782df-0eea-477f-b199-1e7a04e001b3"))
+  (wire
+    (pts
+      (xy 137.16 88.9)
+      (xy 149.86 88.9))
+    (uuid "04defbb4-8a2c-4fa2-9811-a5b69b2a8f4f"))
+
+  (wire
+    (pts
+      (xy 101.6 76.2)
+      (xy 101.6 78.74))
+    (uuid "a5889724-6804-4796-a440-c76b6f34e7cf"))
+
+  (wire
+    (pts
+      (xy 101.6 78.74)
+      (xy 111.76 78.74))
+    (uuid "fab27d0f-0415-4151-bfc0-b81905f9b9ee"))
+
+  (wire
+    (pts
+      (xy 101.6 101.6)
+      (xy 101.6 99.06))
+    (uuid "3c466937-03f1-472d-a2d6-23fd8eb33d9b"))
+
+  (wire
+    (pts
+      (xy 101.6 99.06)
+      (xy 111.76 99.06))
+    (uuid "105651e7-2ddb-4b2e-b01f-3d58a8db7a8a"))
+
+  (label "CV_IN"
+    (at 93.98 86.36 180)
+    (uuid "d15088bd-f7b8-407d-8050-6efd9bb40bcc"))
+
+  (label "CV_OUT"
+    (at 149.86 88.9 0)
+    (uuid "a10521c6-a719-4877-ac9a-3f975d2de170"))
 
   (symbol
-    (lib_id "Eurorack Common:R_DIN0207")
-    (at 105.41 88.9 90)
+    (lib_id "Eurorack Common:TL071")
+    (at 114.3 88.9 0)
     (unit 1)
     (in_bom yes)
     (on_board yes)
     (dnp no)
-    (uuid "a9ac3c41-f846-43ae-8550-1ac1fc649fb7")
-    (property "Reference" "R1"
-      (at 105.41 85.09 0)
+    (uuid "184285fb-eef8-40fd-8068-e701edc8c699")
+    (property "Reference" "U1"
+      (at 114.3 85.09 0)
       (effects
         (font
           (size 1.27 1.27))))
-    (property "Value" "2k2"
-      (at 105.41 92.71 0)
+    (property "Value" "TL071"
+      (at 114.3 92.71 0)
       (effects
         (font
           (size 1.27 1.27))))
-    (property "Footprint" "Eurorack Common:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal"
-      (at 105.41 88.9 0)
+    (property "Footprint" "Eurorack Common:DIP-8_W7.62mm"
+      (at 114.3 88.9 0)
       (hide yes)
       (effects
         (font
           (size 1.27 1.27))))
     (property "Datasheet" ""
-      (at 105.41 88.9 0)
+      (at 114.3 88.9 0)
       (hide yes)
       (effects
         (font
           (size 1.27 1.27))))
     (instances
-      (project "gate-output"
-        (path "/0326d8ab-cd64-47ed-90bf-a8c76da095f1"
+      (project "cv-output"
+        (path "/e7e0ad1e-d58b-4de9-b1ac-54702c08eda0"
+          (reference "U1")
+          (unit 1)))))
+
+  (symbol
+    (lib_id "Eurorack Common:R_DIN0207")
+    (at 133.35 88.9 90)
+    (unit 1)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "0b2b03d8-d4cc-4226-b14c-452735bd2eeb")
+    (property "Reference" "R1"
+      (at 133.35 85.09 0)
+      (effects
+        (font
+          (size 1.27 1.27))))
+    (property "Value" "1k"
+      (at 133.35 92.71 0)
+      (effects
+        (font
+          (size 1.27 1.27))))
+    (property "Footprint" "Eurorack Common:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal"
+      (at 133.35 88.9 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27))))
+    (property "Datasheet" ""
+      (at 133.35 88.9 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27))))
+    (instances
+      (project "cv-output"
+        (path "/e7e0ad1e-d58b-4de9-b1ac-54702c08eda0"
           (reference "R1")
           (unit 1)))))
 
   (symbol
     (lib_id "Eurorack Common:1N4148")
-    (at 95.25 78.74 270)
+    (at 127 82.55 270)
     (unit 1)
     (in_bom yes)
     (on_board yes)
     (dnp no)
-    (uuid "2c94c752-4fcf-4368-b31d-75f58fa15f4a")
+    (uuid "2c7246fd-614d-4b98-bc8d-7f37f55859e5")
     (property "Reference" "D1"
-      (at 95.25 74.93 0)
+      (at 127 78.74 0)
       (effects
         (font
           (size 1.27 1.27))))
     (property "Value" "1N4148"
-      (at 95.25 82.55 0)
+      (at 127 86.36 0)
       (effects
         (font
           (size 1.27 1.27))))
     (property "Footprint" "Eurorack Common:D_DO-35_SOD27_P7.62mm_Horizontal"
-      (at 95.25 78.74 0)
+      (at 127 82.55 0)
       (hide yes)
       (effects
         (font
           (size 1.27 1.27))))
     (property "Datasheet" ""
-      (at 95.25 78.74 0)
+      (at 127 82.55 0)
       (hide yes)
       (effects
         (font
           (size 1.27 1.27))))
     (instances
-      (project "gate-output"
-        (path "/0326d8ab-cd64-47ed-90bf-a8c76da095f1"
+      (project "cv-output"
+        (path "/e7e0ad1e-d58b-4de9-b1ac-54702c08eda0"
           (reference "D1")
           (unit 1)))))
 
   (symbol
     (lib_id "Eurorack Common:1N4148")
-    (at 95.25 99.06 270)
+    (at 127 95.25 270)
     (unit 1)
     (in_bom yes)
     (on_board yes)
     (dnp no)
-    (uuid "af11e4c4-d120-450b-a202-80ca48a33984")
+    (uuid "b77e3bef-209f-47fb-a182-fa4e6de55519")
     (property "Reference" "D2"
-      (at 95.25 95.25 0)
+      (at 127 91.44 0)
       (effects
         (font
           (size 1.27 1.27))))
     (property "Value" "1N4148"
-      (at 95.25 102.87 0)
+      (at 127 99.06 0)
       (effects
         (font
           (size 1.27 1.27))))
     (property "Footprint" "Eurorack Common:D_DO-35_SOD27_P7.62mm_Horizontal"
-      (at 95.25 99.06 0)
+      (at 127 95.25 0)
       (hide yes)
       (effects
         (font
           (size 1.27 1.27))))
     (property "Datasheet" ""
-      (at 95.25 99.06 0)
+      (at 127 95.25 0)
       (hide yes)
       (effects
         (font
           (size 1.27 1.27))))
     (instances
-      (project "gate-output"
-        (path "/0326d8ab-cd64-47ed-90bf-a8c76da095f1"
+      (project "cv-output"
+        (path "/e7e0ad1e-d58b-4de9-b1ac-54702c08eda0"
           (reference "D2")
           (unit 1)))))
 
   (symbol
-    (lib_id "power:+5V")
-    (at 95.25 69.85 0)
+    (lib_id "power:+12VA")
+    (at 111.76 76.2 0)
     (unit 1)
     (in_bom yes)
     (on_board yes)
     (dnp no)
-    (uuid "93f6513c-0c47-4ba3-8634-e7df9452ff3c")
+    (uuid "8f1fc021-4be9-45f0-8924-3e3f35b6f0c3")
     (property "Reference" "#PWR001"
-      (at 95.25 66.04 0)
+      (at 111.76 72.39 0)
       (hide yes)
       (effects
         (font
           (size 1.27 1.27))))
-    (property "Value" "+5V"
-      (at 95.25 73.66 0)
+    (property "Value" "+12VA"
+      (at 111.76 80.01 0)
       (effects
         (font
           (size 1.27 1.27))))
     (property "Footprint" ""
-      (at 95.25 69.85 0)
+      (at 111.76 76.2 0)
       (hide yes)
       (effects
         (font
           (size 1.27 1.27))))
     (property "Datasheet" ""
-      (at 95.25 69.85 0)
+      (at 111.76 76.2 0)
       (hide yes)
       (effects
         (font
           (size 1.27 1.27))))
     (instances
-      (project "gate-output"
-        (path "/0326d8ab-cd64-47ed-90bf-a8c76da095f1"
+      (project "cv-output"
+        (path "/e7e0ad1e-d58b-4de9-b1ac-54702c08eda0"
           (reference "#PWR001")
           (unit 1)))))
 
   (symbol
-    (lib_id "power:GND")
-    (at 95.25 109.22 0)
+    (lib_id "power:+12VA")
+    (at 127 74.93 0)
     (unit 1)
     (in_bom yes)
     (on_board yes)
     (dnp no)
-    (uuid "a36eda20-eefa-4e5f-b272-bcce6847bbfc")
+    (uuid "f56570c9-f070-40ca-8d7c-d9ebf2083462")
     (property "Reference" "#PWR002"
-      (at 95.25 105.41 0)
+      (at 127 71.12 0)
       (hide yes)
       (effects
         (font
           (size 1.27 1.27))))
-    (property "Value" "GND"
-      (at 95.25 113.03 0)
+    (property "Value" "+12VA"
+      (at 127 78.74 0)
       (effects
         (font
           (size 1.27 1.27))))
     (property "Footprint" ""
-      (at 95.25 109.22 0)
+      (at 127 74.93 0)
       (hide yes)
       (effects
         (font
           (size 1.27 1.27))))
     (property "Datasheet" ""
-      (at 95.25 109.22 0)
+      (at 127 74.93 0)
       (hide yes)
       (effects
         (font
           (size 1.27 1.27))))
     (instances
-      (project "gate-output"
-        (path "/0326d8ab-cd64-47ed-90bf-a8c76da095f1"
+      (project "cv-output"
+        (path "/e7e0ad1e-d58b-4de9-b1ac-54702c08eda0"
           (reference "#PWR002")
           (unit 1)))))
 
   (symbol
-    (lib_id "power:PWR_FLAG")
-    (at 85.09 69.85 0)
+    (lib_id "power:-12VA")
+    (at 111.76 101.6 180)
     (unit 1)
     (in_bom yes)
     (on_board yes)
     (dnp no)
-    (uuid "341fbe3b-c376-4d09-bcf6-74cbc42ec64d")
+    (uuid "65f5f880-9b82-465b-bdcb-ada3bc089588")
+    (property "Reference" "#PWR003"
+      (at 111.76 97.79 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27))))
+    (property "Value" "-12VA"
+      (at 111.76 105.41 0)
+      (effects
+        (font
+          (size 1.27 1.27))))
+    (property "Footprint" ""
+      (at 111.76 101.6 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27))))
+    (property "Datasheet" ""
+      (at 111.76 101.6 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27))))
+    (instances
+      (project "cv-output"
+        (path "/e7e0ad1e-d58b-4de9-b1ac-54702c08eda0"
+          (reference "#PWR003")
+          (unit 1)))))
+
+  (symbol
+    (lib_id "power:-12VA")
+    (at 127 102.87 180)
+    (unit 1)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "72f8402f-6d8b-4b8c-944f-513e274675cf")
+    (property "Reference" "#PWR004"
+      (at 127 99.06 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27))))
+    (property "Value" "-12VA"
+      (at 127 106.68 0)
+      (effects
+        (font
+          (size 1.27 1.27))))
+    (property "Footprint" ""
+      (at 127 102.87 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27))))
+    (property "Datasheet" ""
+      (at 127 102.87 0)
+      (hide yes)
+      (effects
+        (font
+          (size 1.27 1.27))))
+    (instances
+      (project "cv-output"
+        (path "/e7e0ad1e-d58b-4de9-b1ac-54702c08eda0"
+          (reference "#PWR004")
+          (unit 1)))))
+
+  (symbol
+    (lib_id "power:PWR_FLAG")
+    (at 101.6 76.2 0)
+    (unit 1)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "ede7cb3d-989b-449b-aa4c-7d69b33308a7")
     (property "Reference" "?"
-      (at 85.09 66.04 0)
+      (at 101.6 72.39 0)
       (hide yes)
       (effects
         (font
           (size 1.27 1.27))))
     (property "Value" "PWR_FLAG"
-      (at 85.09 73.66 0)
+      (at 101.6 80.01 0)
       (effects
         (font
           (size 1.27 1.27))))
     (property "Footprint" ""
-      (at 85.09 69.85 0)
+      (at 101.6 76.2 0)
       (hide yes)
       (effects
         (font
           (size 1.27 1.27))))
     (property "Datasheet" ""
-      (at 85.09 69.85 0)
+      (at 101.6 76.2 0)
       (hide yes)
       (effects
         (font
           (size 1.27 1.27))))
     (instances
-      (project "gate-output"
-        (path "/0326d8ab-cd64-47ed-90bf-a8c76da095f1"
+      (project "cv-output"
+        (path "/e7e0ad1e-d58b-4de9-b1ac-54702c08eda0"
           (reference "?")
           (unit 1)))))
 
   (symbol
     (lib_id "power:PWR_FLAG")
-    (at 85.09 109.22 180)
+    (at 101.6 101.6 180)
     (unit 1)
     (in_bom yes)
     (on_board yes)
     (dnp no)
-    (uuid "bee8451c-9809-4a36-a732-293fc06d55db")
+    (uuid "5c87e3d6-cc11-4850-8b6e-168b4537b409")
     (property "Reference" "?"
-      (at 85.09 105.41 0)
+      (at 101.6 97.79 0)
       (hide yes)
       (effects
         (font
           (size 1.27 1.27))))
     (property "Value" "PWR_FLAG"
-      (at 85.09 113.03 0)
+      (at 101.6 105.41 0)
       (effects
         (font
           (size 1.27 1.27))))
     (property "Footprint" ""
-      (at 85.09 109.22 0)
+      (at 101.6 101.6 0)
       (hide yes)
       (effects
         (font
           (size 1.27 1.27))))
     (property "Datasheet" ""
-      (at 85.09 109.22 0)
+      (at 101.6 101.6 0)
       (hide yes)
       (effects
         (font
           (size 1.27 1.27))))
     (instances
-      (project "gate-output"
-        (path "/0326d8ab-cd64-47ed-90bf-a8c76da095f1"
+      (project "cv-output"
+        (path "/e7e0ad1e-d58b-4de9-b1ac-54702c08eda0"
           (reference "?")
           (unit 1)))))
 )
