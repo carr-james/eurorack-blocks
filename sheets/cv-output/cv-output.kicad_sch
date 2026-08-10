@@ -675,7 +675,179 @@
             (type default))
           (fill
             (type none))))
-      (embedded_fonts no)))
+      (embedded_fonts no))
+		(symbol
+		  "Eurorack Common:TL071CP"
+		  (pin_names
+		    (offset 0.127))
+		  (exclude_from_sim no)
+		  (in_bom yes)
+		  (on_board yes)
+		  (in_pos_files yes)
+		  (duplicate_pin_numbers_are_jumpers no)
+		  (property "Reference" "U"
+		    (at 0 6.35 0)
+		    (show_name no)
+		    (do_not_autoplace no)
+		    (effects
+		      (font
+		        (size 1.27 1.27))
+		      (justify left)))
+		  (property "Value" "TL071CP"
+		    (at 0 3.81 0)
+		    (show_name no)
+		    (do_not_autoplace no)
+		    (effects
+		      (font
+		        (size 1.27 1.27))
+		      (justify left)))
+		  (property "Footprint" "Eurorack Common:DIP-8_W7.62mm"
+		    (at 1.27 1.27 0)
+		    (show_name no)
+		    (do_not_autoplace no)
+		    (hide yes)
+		    (effects
+		      (font
+		        (size 1.27 1.27))))
+		  (property "Datasheet" "http://www.ti.com/lit/ds/symlink/tl071.pdf"
+		    (at 3.81 3.81 0)
+		    (show_name no)
+		    (do_not_autoplace no)
+		    (hide yes)
+		    (effects
+		      (font
+		        (size 1.27 1.27))))
+		  (property "Description" "Single JFET-input operational amplifier, PDIP-8"
+		    (at 0 0 0)
+		    (show_name no)
+		    (do_not_autoplace no)
+		    (hide yes)
+		    (effects
+		      (font
+		        (size 1.27 1.27))))
+		  (property "ki_keywords" "single opamp"
+		    (at 0 0 0)
+		    (show_name no)
+		    (do_not_autoplace no)
+		    (hide yes)
+		    (effects
+		      (font
+		        (size 1.27 1.27))))
+		  (property "ki_fp_filters" "SOIC*3.9x4.9mm*P1.27mm* DIP*W7.62mm* TSSOP*3x3mm*P0.65mm*"
+		    (at 0 0 0)
+		    (show_name no)
+		    (do_not_autoplace no)
+		    (hide yes)
+		    (effects
+		      (font
+		        (size 1.27 1.27))))
+
+		  (symbol "TL071CP_0_1"
+		    (polyline
+		      (pts
+		        (xy -5.08 5.08)
+		        (xy 5.08 0)
+		        (xy -5.08 -5.08)
+		        (xy -5.08 5.08))
+		      (stroke
+		        (width 0.254)
+		        (type default))
+		      (fill
+		        (type background))))
+
+		  (symbol "TL071CP_1_1"
+		    (pin input line
+		      (at 0 -7.62 90)
+		      (length 5.08)
+		      (name "NULL"
+		        (effects
+		          (font
+		            (size 0.508 0.508))))
+		      (number "1"
+		        (effects
+		          (font
+		            (size 1.27 1.27)))))
+		    (pin input line
+		      (at -7.62 -2.54 0)
+		      (length 2.54)
+		      (name "-"
+		        (effects
+		          (font
+		            (size 1.27 1.27))))
+		      (number "2"
+		        (effects
+		          (font
+		            (size 1.27 1.27)))))
+		    (pin input line
+		      (at -7.62 2.54 0)
+		      (length 2.54)
+		      (name "+"
+		        (effects
+		          (font
+		            (size 1.27 1.27))))
+		      (number "3"
+		        (effects
+		          (font
+		            (size 1.27 1.27)))))
+		    (pin power_in line
+		      (at -2.54 -7.62 90)
+		      (length 3.81)
+		      (name "V-"
+		        (effects
+		          (font
+		            (size 1.27 1.27))))
+		      (number "4"
+		        (effects
+		          (font
+		            (size 1.27 1.27)))))
+		    (pin input line
+		      (at 2.54 -7.62 90)
+		      (length 6.35)
+		      (name "NULL"
+		        (effects
+		          (font
+		            (size 0.508 0.508))))
+		      (number "5"
+		        (effects
+		          (font
+		            (size 1.27 1.27)))))
+		    (pin output line
+		      (at 7.62 0 180)
+		      (length 2.54)
+		      (name ""
+		        (effects
+		          (font
+		            (size 1.27 1.27))))
+		      (number "6"
+		        (effects
+		          (font
+		            (size 1.27 1.27)))))
+		    (pin power_in line
+		      (at -2.54 7.62 270)
+		      (length 3.81)
+		      (name "V+"
+		        (effects
+		          (font
+		            (size 1.27 1.27))))
+		      (number "7"
+		        (effects
+		          (font
+		            (size 1.27 1.27)))))
+		    (pin no_connect line
+		      (at 0 2.54 270)
+		      (length 2.54)
+		      (hide yes)
+		      (name "NC"
+		        (effects
+		          (font
+		            (size 1.27 1.27))))
+		      (number "8"
+		        (effects
+		          (font
+		            (size 1.27 1.27))))))
+		  (embedded_fonts no)
+		)
+	)
 
   (junction
     (at 127 88.9)
@@ -900,7 +1072,7 @@
     (uuid "a10521c6-a719-4877-ac9a-3f975d2de170"))
 
   (symbol
-    (lib_id "Eurorack Common:TL071")
+    (lib_id "Eurorack Common:TL071CP")
     (at 114.3 88.9 0)
     (unit 1)
     (in_bom yes)
