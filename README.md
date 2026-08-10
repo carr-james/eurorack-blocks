@@ -100,6 +100,42 @@ on both faces. Count vias, not layers.
 Leave the board corners clear. Double-sided milling needs four 2mm dowel holes,
 3mm in from the edges, to align the two sides.
 
+### Ground pour
+
+Boards carry a ground pour on both layers.
+
+On a milled board the pour is close to free. Isolation milling only cuts
+channels around what you route, and everything it does not cut stays as copper.
+Clearing a large area is the expensive operation, not keeping it.
+
+Three things the pour brings with it:
+
+- **Islands.** Isolation milling leaves scraps of copper with no connection to
+  anything. Set the zone to remove islands, or they float and couple noise.
+- **Stitching.** Nothing is plated at home, so the top and bottom pours are two
+  separate sheets of copper until you join them. Each stitch is a rivet or a
+  soldered wire. Place a few near each integrated circuit and along the supply
+  path, and count them as vias.
+- **Zone clearance.** The pour clearance must not go below the 0.2mm isolation
+  width. Set it in Board Setup and make a test cut before committing a board.
+
+### Decoupling and the ground pour
+
+The pour does not replace the decoupling capacitors, and the capacitors do not
+replace the pour. They are two halves of the same loop.
+
+| | Supplies |
+|---|---|
+| 100nF at the package | the charge an output needs during a switching edge |
+| Ground pour | a low impedance path for that charge to return by |
+
+A pour with no local capacitor still pulls the transient through the whole
+supply trace. A capacitor with no pour has a long return path, so its own loop
+is large and its inductance undoes the benefit.
+
+The pour makes the capacitors work better, so it is a reason to keep them, not
+to drop them.
+
 ## Learnings
 
 [docs/learnings.md](docs/learnings.md) records facts that cost time to find, and
@@ -164,9 +200,9 @@ op-amp stage around it and the pot wires in.
 - Every part carries a footprint. Check the exported netlist, not the
   schematic. ERC does not check this.
 - **Every integrated circuit gets a 100nF ceramic across its supply pins**, one
-  per package, and one per rail for a split supply. Home boards are two layers
-  with no ground plane, so there is nothing else to hold the rail up during a
-  switching edge. ERC does not check this either.
+  per package, and one per rail for a split supply. The capacitor supplies the
+  transient current locally, which nothing else on the board can do. ERC does
+  not check this either. See "Decoupling and the ground pour".
 - Name in `kebab-case` by function: `vca-linear`, not `lm13700-vca`.
 - Version every circuit. See [docs/versioning.md](docs/versioning.md).
 - Write a `README.md` next to every block. See below.

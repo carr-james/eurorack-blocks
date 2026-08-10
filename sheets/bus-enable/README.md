@@ -140,8 +140,9 @@ signal pin is VSS − 0.5V to VDD + 0.5V.
 mount build.
 
 C1 is local supply decoupling across the package. Every block with an integrated
-circuit now carries one per package, and one per rail for a split supply. See
-the repo README under Conventions.
+circuit carries one per package, and one per rail for a split supply. The ground
+pour does not replace it. See the repo README under "Decoupling and the ground
+pour".
 
 ## Changelog
 
