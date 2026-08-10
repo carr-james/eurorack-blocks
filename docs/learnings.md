@@ -101,7 +101,7 @@ carries a bleeder resistor for this reason.
 A block harness reports errors that are not faults. The rails, the inputs and
 the interface labels all come from the parent in real use.
 
-Set these four rules to `warning` in a harness `.kicad_pro`:
+Set these five rules to `warning` in a harness `.kicad_pro`:
 
 | Rule | Why it fires |
 |---|---|
@@ -109,12 +109,57 @@ Set these four rules to `warning` in a harness `.kicad_pro`:
 | `isolated_pin_label` | an interface label touches one pin, which is correct |
 | `missing_unit` | a spare op-amp unit belongs to the module, not the block |
 | `missing_input_pin` | same reason |
+| `pin_not_connected` | a hierarchical label has no parent sheet in a harness |
+
+`pin_not_connected` is the widest of the five, because it also covers a pin that
+is genuinely left dangling. Put a no-connect flag on every pin a block does not
+use, so the relaxation hides nothing.
 
 Add a `PWR_FLAG` for each rail the block consumes. Do not downgrade
 `power_pin_not_driven`. A flag is explicit and shows intent.
 
 **Do not copy this profile into a module project.** In a module these four are
 real faults. The harness is the only place the relaxation is correct.
+
+## A block interface needs hierarchical labels
+
+A plain net label is scoped to its sheet. It does not become a sheet pin, so a
+parent cannot reach it. A block whose interface uses plain labels has no
+interface at all once it is instantiated.
+
+Use `hierarchical_label` for every net that crosses the block boundary, with a
+shape of `input`, `output` or `bidirectional`. The parent then imports them as
+sheet pins.
+
+Two exceptions stay as they are:
+
+- Global rails such as `+5V` and `GND`. A power symbol crosses the boundary on
+  its own.
+- Internal nets. A plain label is correct there, and scoping is what you want.
+
+`power-input`, `gate-output`, `cv-output`, `clock-input` and `regulator-5v` were
+built with plain labels. They need converting before any module uses them.
+
+## A self-terminating pulse is not a pulse
+
+The classic way to shorten a CD4017B is to wire a decoded output back to
+`RESET`. The reset clears the output, and the output was the reset, so the pulse
+ends itself.
+
+The pulse width is then one propagation delay. TI SCHS027C gives that delay as
+265ns typical and 530ns maximum, and gives **no minimum**. The part needs a
+reset pulse of up to 260ns. Nothing in the datasheet guarantees the loop makes
+one.
+
+Inside one package it works, because the internal clear happens before the
+output moves. Do not extend it across packages, and never across a chain, where
+one device has to reset several others with a pulse it cuts short itself.
+
+Generate a reset whose width you set. An RC into a Schmitt inverter gives
+microseconds against a requirement of hundreds of nanoseconds.
+
+**A datasheet minimum you cannot find is not zero.** If the timing you depend on
+is a delay with no specified minimum, the design has no margin.
 
 ## Konnect drops the footprint
 
@@ -158,6 +203,31 @@ are closed. That is safe. A lock on the document is not.
 and saving in Eeschema normalised them to 11.
 
 Open and save in Eeschema after a Konnect wiring session.
+
+## Do not hand-edit a schematic s-expression
+
+`delete_schematic_component` with `all_units` removed one unit of a five unit
+part and left four behind. Editing the file with a script to remove the rest
+truncated it to zero bytes, and the whole project had to be rebuilt.
+
+A KiCad schematic is not a text file with brackets. Symbol instances, the
+`lib_symbols` cache and the instance paths all reference each other.
+
+Delete the project and rebuild it. A block is twenty API calls, and a rebuild is
+faster than repairing a corrupt file.
+
+Field text is the one safe exception. Moving a `(at x y rot)` inside a single
+`(property ...)` touches nothing else, and it is the only way to fix overlapping
+Reference and Value text without opening Eeschema.
+
+## The Konnect lock file is transient
+
+`find <project> -name '*.lck'` can report a lock that belongs to Konnect's own
+write, not to an open editor. Konnect takes the lock, writes and releases it, so
+a scan run at the wrong moment gives a false positive.
+
+The rule against writing a file that KiCad has open still stands. Check whether
+the schematic editor is actually open, not whether a lock file existed once.
 
 ## Layout belongs in Eeschema
 

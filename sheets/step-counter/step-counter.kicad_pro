@@ -1,0 +1,22 @@
+{
+  "meta": {
+    "filename": "step-counter.kicad_pro",
+    "version": 1
+  },
+  "board": {
+    "design_settings": {}
+  },
+  "schematic": {
+    "legacy_lib_dir": "",
+    "legacy_lib_list": []
+  },
+  "erc": {
+    "rule_severities": {
+      "pin_not_driven": "warning",
+      "isolated_pin_label": "warning",
+      "missing_unit": "warning",
+      "missing_input_pin": "warning",
+      "pin_not_connected": "warning"
+    }
+  }
+}
