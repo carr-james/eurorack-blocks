@@ -100,6 +100,12 @@ on both faces. Count vias, not layers.
 Leave the board corners clear. Double-sided milling needs four 2mm dowel holes,
 3mm in from the edges, to align the two sides.
 
+## Learnings
+
+[docs/learnings.md](docs/learnings.md) records facts that cost time to find, and
+corrects entries that turned out to be wrong. Read it before you build a block.
+Add to it when you learn something. Amend it when it is wrong.
+
 ## After Konnect creates a file
 
 Konnect writes new files in an older format. It stamps `version 20250610` and
