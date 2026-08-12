@@ -97,8 +97,16 @@ Boards are double sided. Route on both layers.
 Nothing is plated at home, so each via is a rivet you set or a wire you solder
 on both faces. Count vias, not layers.
 
-Leave the board corners clear. Double-sided milling needs four 2mm dowel holes,
-3mm in from the edges, to align the two sides.
+Double-sided milling needs four 2mm dowel holes to align the two sides. **They
+go in the waste material outside the board outline, not in the board.** So do
+the fiducials. Both are registration features for the machine, not part of the
+module, and putting them inside the outline wastes board area and leaves holes
+in the finished PCB.
+
+Place them so the stock can only be flipped one way: mirrored about the board's
+vertical centre line, and at different distances above and below the board. A
+left-to-right flip then registers, and a 180 degree rotation does not.
+`step-sequencer-8` is the worked example.
 
 ### Ground pour
 
