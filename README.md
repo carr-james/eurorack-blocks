@@ -103,9 +103,13 @@ the fiducials. Both are registration features for the machine, not part of the
 module, and putting them inside the outline wastes board area and leaves holes
 in the finished PCB.
 
-Place them so the stock can only be flipped one way: mirrored about the board's
-vertical centre line, and at different distances above and below the board. A
-left-to-right flip then registers, and a 180 degree rotation does not.
+Place them so the stock can only be flipped one way. Pair each hole with another
+across the board's **horizontal midline**, and put the left and right pairs at
+**different distances** from the board. A top-to-bottom flip then registers,
+while a left-to-right flip and a 180 degree rotation do not.
+
+Check it rather than eyeballing it. Apply each transform to the set of hole
+positions and confirm only one maps the set onto itself.
 `step-sequencer-8` is the worked example.
 
 ### Ground pour
