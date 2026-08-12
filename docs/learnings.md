@@ -115,8 +115,10 @@ Set these five rules to `warning` in a harness `.kicad_pro`:
 is genuinely left dangling. Put a no-connect flag on every pin a block does not
 use, so the relaxation hides nothing.
 
-Add a `PWR_FLAG` for each rail the block consumes. Do not downgrade
-`power_pin_not_driven`. A flag is explicit and shows intent.
+**Do not add a `PWR_FLAG` for a rail the block only consumes.** It satisfies the
+harness and then collides with every other block in a module. Only the block
+that sources a rail should flag it. See "PWR_FLAG belongs to the harness, not to
+the block", and expect `power_pin_not_driven` in a consuming block's harness.
 
 **Do not copy this profile into a module project.** In a module these four are
 real faults. The harness is the only place the relaxation is correct.
@@ -172,7 +174,48 @@ microseconds against a requirement of hundreds of nanoseconds.
 **A datasheet minimum you cannot find is not zero.** If the timing you depend on
 is a delay with no specified minimum, the design has no margin.
 
-## Konnect drops the footprint
+## Blocks collide on references when a module uses several
+
+Every block numbers its own parts from `U1`, `R1`, `C1`. Instantiate nine of
+them in one module and KiCad sees nine symbols claiming `U1` and treats them as
+units of one component. The module ERC filled with `different_unit_net` and
+`different_unit_footprint`, 47 errors that mean nothing about the circuit.
+
+This is not a fault in the blocks. A child sheet's own reference is a default,
+and KiCad stores the real one per parent project and sheet path:
+
+```
+(instances
+  (project "main"
+    (path "/<root-uuid>/<sheet-uuid>"
+      (reference "U4")
+      (unit 1))))
+```
+
+**Annotate the module across the whole hierarchy before its ERC means
+anything.** Use Eeschema, Tools then Annotate, whole schematic, reset existing
+annotation. `kicad-cli` has no annotate subcommand in KiCad 10, and Konnect's
+`annotate_schematic` only fills references that are already `?`, so neither
+fixes a collision.
+
+The block keeps its own numbering for its own harness. Each parent gets its own,
+so two modules using the same block do not fight.
+
+## PWR_FLAG belongs to the harness, not to the block
+
+Nine blocks that each flag `+5V` give nine `Power output` pins on one net, and
+the module ERC reports `pin_to_pin` for every pair. 19 errors, again meaning
+nothing about the circuit.
+
+A `PWR_FLAG` asserts "this net is driven by something ERC cannot see". In a
+module that is only true of the block that actually sources the rail:
+`power-input` for `+12VA` and `-12VA`, `regulator-5v` for `+5V`. Everywhere else
+the rail *is* driven and the flag is a lie ERC believes.
+
+The earlier entry under "Block harness ERC" said to add a flag for each rail a
+block consumes, and not to downgrade `power_pin_not_driven`. **That was wrong**,
+and it was wrong because it was only ever tested against a harness. See
+Corrections.
 
 `add_schematic_component` does not copy the `Footprint` property from the
 library symbol. Every placed instance arrives with an empty footprint.
@@ -346,6 +389,19 @@ measure damage. Use ERC.
 **KiCad 10 is blocked by pcb2blender.** Wrong. That claim came from grepping the
 `main` branches, where Blender is unused. The `dev` branches do use it, and
 pcb2blender constrains the architecture, not the KiCad version.
+
+**Add a PWR_FLAG for each rail the block consumes.** Wrong. It was tested only
+against a harness, where a block stands alone and the flag is the only way to
+tell ERC the rail is fed. In a module the rail is fed by `power-input` or
+`regulator-5v`, and every other block's flag becomes a second driver on the same
+net. Nine blocks gave 19 `pin_to_pin` errors. Only the block that sources a rail
+flags it.
+
+**A block harness proves a block is correct.** Overstated. A harness cannot see
+anything that only appears when blocks are combined: reference collisions,
+duplicate power flags, or an interface that never becomes a sheet pin. All three
+got through a clean harness ERC. Assemble a module early, and treat its ERC as
+the real one.
 
 **Blender is needed to make WRL models.** Wrong for anything KiCad ships. The
 upstream `kicad-packages3D` repository still publishes the WRL files that the
