@@ -266,6 +266,35 @@ with power flags in the bill of materials before this was found.
 Annotate in Eeschema, or set the reference through the API when you place the
 symbol.
 
+## A Konnect project has no root sheet instance
+
+`create_project` writes a schematic with no `(sheet_instances)` block. A flat
+schematic does not need one. The moment the project gains a child sheet it does,
+and KiCad opens it with:
+
+> An error was found when loading the schematic that has been automatically
+> fixed. Please save the schematic to repair the broken file.
+
+Every valid root schematic ends with:
+
+```
+	(sheet_instances
+		(path "/"
+			(page "1")
+		)
+	)
+```
+
+`add_hierarchical_sheet` numbers the children from page 2 and never adds the
+root's own entry. Add it before opening a module in Eeschema.
+
+`kicad-cli sch upgrade` does not repair this, so it is not a check for it. Grep
+for the block instead:
+
+```bash
+grep -c sheet_instances <root>.kicad_sch
+```
+
 ## Konnect writes an old file format
 
 Files it creates carry `version 20250610` and `generator "konnect"`. KiCad 10
