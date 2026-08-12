@@ -1521,6 +1521,10 @@
       (project "cv-mux-8"
         (path "/4ca10583-06ca-4757-80d7-1ed4d61852b8"
           (reference "#PWR007")
+          (unit 1)))
+      (project "main"
+        (path "/9c9cf26b-8777-4e0a-bc85-0ccfa9104680/279ec617-bdd3-4e68-a972-635a06a0574f"
+          (reference "#PWR36")
           (unit 1)))))
 
   (symbol
@@ -1575,6 +1579,10 @@
       (project "cv-mux-8"
         (path "/4ca10583-06ca-4757-80d7-1ed4d61852b8"
           (reference "#PWR002")
+          (unit 1)))
+      (project "main"
+        (path "/9c9cf26b-8777-4e0a-bc85-0ccfa9104680/279ec617-bdd3-4e68-a972-635a06a0574f"
+          (reference "#PWR37")
           (unit 1)))))
 
   (symbol
@@ -1654,6 +1662,10 @@
       (project "cv-mux-8"
         (path "/4ca10583-06ca-4757-80d7-1ed4d61852b8"
           (reference "U2")
+          (unit 5)))
+      (project "main"
+        (path "/9c9cf26b-8777-4e0a-bc85-0ccfa9104680/279ec617-bdd3-4e68-a972-635a06a0574f"
+          (reference "U5")
           (unit 5)))))
 
   (symbol
@@ -1733,6 +1745,10 @@
       (project "cv-mux-8"
         (path "/4ca10583-06ca-4757-80d7-1ed4d61852b8"
           (reference "U1")
+          (unit 5)))
+      (project "main"
+        (path "/9c9cf26b-8777-4e0a-bc85-0ccfa9104680/279ec617-bdd3-4e68-a972-635a06a0574f"
+          (reference "U6")
           (unit 5)))))
 
   (symbol
@@ -1812,6 +1828,10 @@
       (project "cv-mux-8"
         (path "/4ca10583-06ca-4757-80d7-1ed4d61852b8"
           (reference "U1")
+          (unit 4)))
+      (project "main"
+        (path "/9c9cf26b-8777-4e0a-bc85-0ccfa9104680/279ec617-bdd3-4e68-a972-635a06a0574f"
+          (reference "U6")
           (unit 4)))))
 
   (symbol
@@ -1891,6 +1911,10 @@
       (project "cv-mux-8"
         (path "/4ca10583-06ca-4757-80d7-1ed4d61852b8"
           (reference "U2")
+          (unit 1)))
+      (project "main"
+        (path "/9c9cf26b-8777-4e0a-bc85-0ccfa9104680/279ec617-bdd3-4e68-a972-635a06a0574f"
+          (reference "U5")
           (unit 1)))))
 
   (symbol
@@ -1945,6 +1969,10 @@
       (project "cv-mux-8"
         (path "/4ca10583-06ca-4757-80d7-1ed4d61852b8"
           (reference "#PWR006")
+          (unit 1)))
+      (project "main"
+        (path "/9c9cf26b-8777-4e0a-bc85-0ccfa9104680/279ec617-bdd3-4e68-a972-635a06a0574f"
+          (reference "#PWR38")
           (unit 1)))))
 
   (symbol
@@ -1999,6 +2027,10 @@
       (project "cv-mux-8"
         (path "/4ca10583-06ca-4757-80d7-1ed4d61852b8"
           (reference "#PWR008")
+          (unit 1)))
+      (project "main"
+        (path "/9c9cf26b-8777-4e0a-bc85-0ccfa9104680/279ec617-bdd3-4e68-a972-635a06a0574f"
+          (reference "#PWR39")
           (unit 1)))))
 
   (symbol
@@ -2053,6 +2085,10 @@
       (project "cv-mux-8"
         (path "/4ca10583-06ca-4757-80d7-1ed4d61852b8"
           (reference "#PWR004")
+          (unit 1)))
+      (project "main"
+        (path "/9c9cf26b-8777-4e0a-bc85-0ccfa9104680/279ec617-bdd3-4e68-a972-635a06a0574f"
+          (reference "#PWR40")
           (unit 1)))))
 
   (symbol
@@ -2132,6 +2168,10 @@
       (project "cv-mux-8"
         (path "/4ca10583-06ca-4757-80d7-1ed4d61852b8"
           (reference "U2")
+          (unit 3)))
+      (project "main"
+        (path "/9c9cf26b-8777-4e0a-bc85-0ccfa9104680/279ec617-bdd3-4e68-a972-635a06a0574f"
+          (reference "U5")
           (unit 3)))))
 
   (symbol
@@ -2186,6 +2226,10 @@
       (project "cv-mux-8"
         (path "/4ca10583-06ca-4757-80d7-1ed4d61852b8"
           (reference "#PWR001")
+          (unit 1)))
+      (project "main"
+        (path "/9c9cf26b-8777-4e0a-bc85-0ccfa9104680/279ec617-bdd3-4e68-a972-635a06a0574f"
+          (reference "#PWR41")
           (unit 1)))))
 
   (symbol
@@ -2265,6 +2309,10 @@
       (project "cv-mux-8"
         (path "/4ca10583-06ca-4757-80d7-1ed4d61852b8"
           (reference "U2")
+          (unit 2)))
+      (project "main"
+        (path "/9c9cf26b-8777-4e0a-bc85-0ccfa9104680/279ec617-bdd3-4e68-a972-635a06a0574f"
+          (reference "U5")
           (unit 2)))))
 
   (symbol
@@ -2344,6 +2392,10 @@
       (project "cv-mux-8"
         (path "/4ca10583-06ca-4757-80d7-1ed4d61852b8"
           (reference "U1")
+          (unit 1)))
+      (project "main"
+        (path "/9c9cf26b-8777-4e0a-bc85-0ccfa9104680/279ec617-bdd3-4e68-a972-635a06a0574f"
+          (reference "U6")
           (unit 1)))))
 
   (symbol
@@ -2423,6 +2475,10 @@
       (project "cv-mux-8"
         (path "/4ca10583-06ca-4757-80d7-1ed4d61852b8"
           (reference "U2")
+          (unit 4)))
+      (project "main"
+        (path "/9c9cf26b-8777-4e0a-bc85-0ccfa9104680/279ec617-bdd3-4e68-a972-635a06a0574f"
+          (reference "U5")
           (unit 4)))))
 
   (symbol
@@ -2502,6 +2558,10 @@
       (project "cv-mux-8"
         (path "/4ca10583-06ca-4757-80d7-1ed4d61852b8"
           (reference "U1")
+          (unit 2)))
+      (project "main"
+        (path "/9c9cf26b-8777-4e0a-bc85-0ccfa9104680/279ec617-bdd3-4e68-a972-635a06a0574f"
+          (reference "U6")
           (unit 2)))))
 
   (symbol
@@ -2581,6 +2641,10 @@
       (project "cv-mux-8"
         (path "/4ca10583-06ca-4757-80d7-1ed4d61852b8"
           (reference "U1")
+          (unit 3)))
+      (project "main"
+        (path "/9c9cf26b-8777-4e0a-bc85-0ccfa9104680/279ec617-bdd3-4e68-a972-635a06a0574f"
+          (reference "U6")
           (unit 3)))))
 
   (symbol
@@ -2635,6 +2699,10 @@
       (project "cv-mux-8"
         (path "/4ca10583-06ca-4757-80d7-1ed4d61852b8"
           (reference "#PWR005")
+          (unit 1)))
+      (project "main"
+        (path "/9c9cf26b-8777-4e0a-bc85-0ccfa9104680/279ec617-bdd3-4e68-a972-635a06a0574f"
+          (reference "#PWR42")
           (unit 1)))))
 
   (symbol
@@ -2689,6 +2757,10 @@
       (project "cv-mux-8"
         (path "/4ca10583-06ca-4757-80d7-1ed4d61852b8"
           (reference "#PWR003")
+          (unit 1)))
+      (project "main"
+        (path "/9c9cf26b-8777-4e0a-bc85-0ccfa9104680/279ec617-bdd3-4e68-a972-635a06a0574f"
+          (reference "#PWR43")
           (unit 1)))))
 
   (symbol
@@ -2725,6 +2797,10 @@
       (project "cv-mux-8"
         (path "/4ca10583-06ca-4757-80d7-1ed4d61852b8"
           (reference "C1")
+          (unit 1)))
+      (project "main"
+        (path "/9c9cf26b-8777-4e0a-bc85-0ccfa9104680/279ec617-bdd3-4e68-a972-635a06a0574f"
+          (reference "C9")
           (unit 1)))))
 
   (symbol
@@ -2761,6 +2837,10 @@
       (project "cv-mux-8"
         (path "/4ca10583-06ca-4757-80d7-1ed4d61852b8"
           (reference "C2")
+          (unit 1)))
+      (project "main"
+        (path "/9c9cf26b-8777-4e0a-bc85-0ccfa9104680/279ec617-bdd3-4e68-a972-635a06a0574f"
+          (reference "C10")
           (unit 1)))))
 
   (symbol
@@ -2798,6 +2878,10 @@
       (project "cv-mux-8"
         (path "/4ca10583-06ca-4757-80d7-1ed4d61852b8"
           (reference "#PWR009")
+          (unit 1)))
+      (project "main"
+        (path "/9c9cf26b-8777-4e0a-bc85-0ccfa9104680/279ec617-bdd3-4e68-a972-635a06a0574f"
+          (reference "#PWR44")
           (unit 1)))))
 
   (symbol
@@ -2835,6 +2919,10 @@
       (project "cv-mux-8"
         (path "/4ca10583-06ca-4757-80d7-1ed4d61852b8"
           (reference "#PWR010")
+          (unit 1)))
+      (project "main"
+        (path "/9c9cf26b-8777-4e0a-bc85-0ccfa9104680/279ec617-bdd3-4e68-a972-635a06a0574f"
+          (reference "#PWR45")
           (unit 1)))))
 
   (symbol
@@ -2872,6 +2960,10 @@
       (project "cv-mux-8"
         (path "/4ca10583-06ca-4757-80d7-1ed4d61852b8"
           (reference "#PWR011")
+          (unit 1)))
+      (project "main"
+        (path "/9c9cf26b-8777-4e0a-bc85-0ccfa9104680/279ec617-bdd3-4e68-a972-635a06a0574f"
+          (reference "#PWR46")
           (unit 1)))))
 
   (symbol
@@ -2909,6 +3001,10 @@
       (project "cv-mux-8"
         (path "/4ca10583-06ca-4757-80d7-1ed4d61852b8"
           (reference "#PWR012")
+          (unit 1)))
+      (project "main"
+        (path "/9c9cf26b-8777-4e0a-bc85-0ccfa9104680/279ec617-bdd3-4e68-a972-635a06a0574f"
+          (reference "#PWR47")
           (unit 1)))))
   (embedded_fonts no)
 

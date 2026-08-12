@@ -1376,6 +1376,10 @@
       (project "cv-scale-offset"
         (path "/56bc9f2d-7f89-4efa-abf8-25deba0b59c0"
           (reference "#PWR005")
+          (unit 1)))
+      (project "main"
+        (path "/9c9cf26b-8777-4e0a-bc85-0ccfa9104680/9d3a3b69-0109-43ba-8ce0-3df5a754cc3a"
+          (reference "#PWR54")
           (unit 1)))))
 
   (symbol
@@ -1431,6 +1435,10 @@
       (project "cv-scale-offset"
         (path "/56bc9f2d-7f89-4efa-abf8-25deba0b59c0"
           (reference "R1")
+          (unit 1)))
+      (project "main"
+        (path "/9c9cf26b-8777-4e0a-bc85-0ccfa9104680/9d3a3b69-0109-43ba-8ce0-3df5a754cc3a"
+          (reference "R8")
           (unit 1)))))
 
   (symbol
@@ -1498,6 +1506,10 @@
       (project "cv-scale-offset"
         (path "/56bc9f2d-7f89-4efa-abf8-25deba0b59c0"
           (reference "U1")
+          (unit 2)))
+      (project "main"
+        (path "/9c9cf26b-8777-4e0a-bc85-0ccfa9104680/9d3a3b69-0109-43ba-8ce0-3df5a754cc3a"
+          (reference "U8")
           (unit 2)))))
 
   (symbol
@@ -1552,6 +1564,10 @@
       (project "cv-scale-offset"
         (path "/56bc9f2d-7f89-4efa-abf8-25deba0b59c0"
           (reference "#PWR013")
+          (unit 1)))
+      (project "main"
+        (path "/9c9cf26b-8777-4e0a-bc85-0ccfa9104680/9d3a3b69-0109-43ba-8ce0-3df5a754cc3a"
+          (reference "#PWR55")
           (unit 1)))))
 
   (symbol
@@ -1609,6 +1625,10 @@
       (project "cv-scale-offset"
         (path "/56bc9f2d-7f89-4efa-abf8-25deba0b59c0"
           (reference "RV1")
+          (unit 1)))
+      (project "main"
+        (path "/9c9cf26b-8777-4e0a-bc85-0ccfa9104680/9d3a3b69-0109-43ba-8ce0-3df5a754cc3a"
+          (reference "RV1")
           (unit 1)))))
 
   (symbol
@@ -1663,6 +1683,10 @@
       (project "cv-scale-offset"
         (path "/56bc9f2d-7f89-4efa-abf8-25deba0b59c0"
           (reference "#PWR011")
+          (unit 1)))
+      (project "main"
+        (path "/9c9cf26b-8777-4e0a-bc85-0ccfa9104680/9d3a3b69-0109-43ba-8ce0-3df5a754cc3a"
+          (reference "#PWR56")
           (unit 1)))))
 
   (symbol
@@ -1720,6 +1744,10 @@
       (project "cv-scale-offset"
         (path "/56bc9f2d-7f89-4efa-abf8-25deba0b59c0"
           (reference "RV2")
+          (unit 1)))
+      (project "main"
+        (path "/9c9cf26b-8777-4e0a-bc85-0ccfa9104680/9d3a3b69-0109-43ba-8ce0-3df5a754cc3a"
+          (reference "RV2")
           (unit 1)))))
 
   (symbol
@@ -1774,6 +1802,10 @@
       (project "cv-scale-offset"
         (path "/56bc9f2d-7f89-4efa-abf8-25deba0b59c0"
           (reference "#PWR009")
+          (unit 1)))
+      (project "main"
+        (path "/9c9cf26b-8777-4e0a-bc85-0ccfa9104680/9d3a3b69-0109-43ba-8ce0-3df5a754cc3a"
+          (reference "#PWR57")
           (unit 1)))))
 
   (symbol
@@ -1828,6 +1860,10 @@
       (project "cv-scale-offset"
         (path "/56bc9f2d-7f89-4efa-abf8-25deba0b59c0"
           (reference "#PWR002")
+          (unit 1)))
+      (project "main"
+        (path "/9c9cf26b-8777-4e0a-bc85-0ccfa9104680/9d3a3b69-0109-43ba-8ce0-3df5a754cc3a"
+          (reference "#PWR58")
           (unit 1)))))
 
   (symbol
@@ -1882,6 +1918,10 @@
       (project "cv-scale-offset"
         (path "/56bc9f2d-7f89-4efa-abf8-25deba0b59c0"
           (reference "#PWR007")
+          (unit 1)))
+      (project "main"
+        (path "/9c9cf26b-8777-4e0a-bc85-0ccfa9104680/9d3a3b69-0109-43ba-8ce0-3df5a754cc3a"
+          (reference "#PWR59")
           (unit 1)))))
 
   (symbol
@@ -1936,6 +1976,10 @@
       (project "cv-scale-offset"
         (path "/56bc9f2d-7f89-4efa-abf8-25deba0b59c0"
           (reference "#PWR006")
+          (unit 1)))
+      (project "main"
+        (path "/9c9cf26b-8777-4e0a-bc85-0ccfa9104680/9d3a3b69-0109-43ba-8ce0-3df5a754cc3a"
+          (reference "#PWR60")
           (unit 1)))))
 
   (symbol
@@ -1990,6 +2034,10 @@
       (project "cv-scale-offset"
         (path "/56bc9f2d-7f89-4efa-abf8-25deba0b59c0"
           (reference "#PWR010")
+          (unit 1)))
+      (project "main"
+        (path "/9c9cf26b-8777-4e0a-bc85-0ccfa9104680/9d3a3b69-0109-43ba-8ce0-3df5a754cc3a"
+          (reference "#PWR61")
           (unit 1)))))
 
   (symbol
@@ -2057,6 +2105,10 @@
       (project "cv-scale-offset"
         (path "/56bc9f2d-7f89-4efa-abf8-25deba0b59c0"
           (reference "U1")
+          (unit 1)))
+      (project "main"
+        (path "/9c9cf26b-8777-4e0a-bc85-0ccfa9104680/9d3a3b69-0109-43ba-8ce0-3df5a754cc3a"
+          (reference "U8")
           (unit 1)))))
 
   (symbol
@@ -2124,6 +2176,10 @@
       (project "cv-scale-offset"
         (path "/56bc9f2d-7f89-4efa-abf8-25deba0b59c0"
           (reference "U1")
+          (unit 3)))
+      (project "main"
+        (path "/9c9cf26b-8777-4e0a-bc85-0ccfa9104680/9d3a3b69-0109-43ba-8ce0-3df5a754cc3a"
+          (reference "U8")
           (unit 3)))))
 
   (symbol
@@ -2178,6 +2234,10 @@
       (project "cv-scale-offset"
         (path "/56bc9f2d-7f89-4efa-abf8-25deba0b59c0"
           (reference "#PWR003")
+          (unit 1)))
+      (project "main"
+        (path "/9c9cf26b-8777-4e0a-bc85-0ccfa9104680/9d3a3b69-0109-43ba-8ce0-3df5a754cc3a"
+          (reference "#PWR62")
           (unit 1)))))
 
   (symbol
@@ -2232,6 +2292,10 @@
       (project "cv-scale-offset"
         (path "/56bc9f2d-7f89-4efa-abf8-25deba0b59c0"
           (reference "#PWR008")
+          (unit 1)))
+      (project "main"
+        (path "/9c9cf26b-8777-4e0a-bc85-0ccfa9104680/9d3a3b69-0109-43ba-8ce0-3df5a754cc3a"
+          (reference "#PWR63")
           (unit 1)))))
 
   (symbol
@@ -2287,6 +2351,10 @@
       (project "cv-scale-offset"
         (path "/56bc9f2d-7f89-4efa-abf8-25deba0b59c0"
           (reference "R2")
+          (unit 1)))
+      (project "main"
+        (path "/9c9cf26b-8777-4e0a-bc85-0ccfa9104680/9d3a3b69-0109-43ba-8ce0-3df5a754cc3a"
+          (reference "R9")
           (unit 1)))))
 
   (symbol
@@ -2341,6 +2409,10 @@
       (project "cv-scale-offset"
         (path "/56bc9f2d-7f89-4efa-abf8-25deba0b59c0"
           (reference "#PWR001")
+          (unit 1)))
+      (project "main"
+        (path "/9c9cf26b-8777-4e0a-bc85-0ccfa9104680/9d3a3b69-0109-43ba-8ce0-3df5a754cc3a"
+          (reference "#PWR64")
           (unit 1)))))
 
   (symbol
@@ -2395,6 +2467,10 @@
       (project "cv-scale-offset"
         (path "/56bc9f2d-7f89-4efa-abf8-25deba0b59c0"
           (reference "#PWR012")
+          (unit 1)))
+      (project "main"
+        (path "/9c9cf26b-8777-4e0a-bc85-0ccfa9104680/9d3a3b69-0109-43ba-8ce0-3df5a754cc3a"
+          (reference "#PWR65")
           (unit 1)))))
 
   (symbol
@@ -2449,6 +2525,10 @@
       (project "cv-scale-offset"
         (path "/56bc9f2d-7f89-4efa-abf8-25deba0b59c0"
           (reference "#PWR004")
+          (unit 1)))
+      (project "main"
+        (path "/9c9cf26b-8777-4e0a-bc85-0ccfa9104680/9d3a3b69-0109-43ba-8ce0-3df5a754cc3a"
+          (reference "#PWR66")
           (unit 1)))))
 
   (symbol
@@ -2485,6 +2565,10 @@
       (project "cv-scale-offset"
         (path "/56bc9f2d-7f89-4efa-abf8-25deba0b59c0"
           (reference "C1")
+          (unit 1)))
+      (project "main"
+        (path "/9c9cf26b-8777-4e0a-bc85-0ccfa9104680/9d3a3b69-0109-43ba-8ce0-3df5a754cc3a"
+          (reference "C12")
           (unit 1)))))
 
   (symbol
@@ -2521,6 +2605,10 @@
       (project "cv-scale-offset"
         (path "/56bc9f2d-7f89-4efa-abf8-25deba0b59c0"
           (reference "C2")
+          (unit 1)))
+      (project "main"
+        (path "/9c9cf26b-8777-4e0a-bc85-0ccfa9104680/9d3a3b69-0109-43ba-8ce0-3df5a754cc3a"
+          (reference "C13")
           (unit 1)))))
 
   (symbol
@@ -2558,6 +2646,10 @@
       (project "cv-scale-offset"
         (path "/56bc9f2d-7f89-4efa-abf8-25deba0b59c0"
           (reference "#PWR014")
+          (unit 1)))
+      (project "main"
+        (path "/9c9cf26b-8777-4e0a-bc85-0ccfa9104680/9d3a3b69-0109-43ba-8ce0-3df5a754cc3a"
+          (reference "#PWR67")
           (unit 1)))))
 
   (symbol
@@ -2595,6 +2687,10 @@
       (project "cv-scale-offset"
         (path "/56bc9f2d-7f89-4efa-abf8-25deba0b59c0"
           (reference "#PWR015")
+          (unit 1)))
+      (project "main"
+        (path "/9c9cf26b-8777-4e0a-bc85-0ccfa9104680/9d3a3b69-0109-43ba-8ce0-3df5a754cc3a"
+          (reference "#PWR68")
           (unit 1)))))
 
   (symbol
@@ -2632,6 +2728,10 @@
       (project "cv-scale-offset"
         (path "/56bc9f2d-7f89-4efa-abf8-25deba0b59c0"
           (reference "#PWR016")
+          (unit 1)))
+      (project "main"
+        (path "/9c9cf26b-8777-4e0a-bc85-0ccfa9104680/9d3a3b69-0109-43ba-8ce0-3df5a754cc3a"
+          (reference "#PWR69")
           (unit 1)))))
 
   (symbol
@@ -2669,6 +2769,10 @@
       (project "cv-scale-offset"
         (path "/56bc9f2d-7f89-4efa-abf8-25deba0b59c0"
           (reference "#PWR017")
+          (unit 1)))
+      (project "main"
+        (path "/9c9cf26b-8777-4e0a-bc85-0ccfa9104680/9d3a3b69-0109-43ba-8ce0-3df5a754cc3a"
+          (reference "#PWR70")
           (unit 1)))))
   (embedded_fonts no)
 

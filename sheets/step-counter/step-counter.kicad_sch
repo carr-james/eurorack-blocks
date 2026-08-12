@@ -2017,6 +2017,10 @@
       (project "step-counter"
         (path "/095499dc-c176-488b-b080-3ddce1879d6f"
           (reference "U2")
+          (unit 3)))
+      (project "main"
+        (path "/9c9cf26b-8777-4e0a-bc85-0ccfa9104680/a1331d86-9124-4791-ba91-53425705cc2c"
+          (reference "U3")
           (unit 3)))))
 
   (symbol
@@ -2100,6 +2104,10 @@
       (project "step-counter"
         (path "/095499dc-c176-488b-b080-3ddce1879d6f"
           (reference "U1")
+          (unit 1)))
+      (project "main"
+        (path "/9c9cf26b-8777-4e0a-bc85-0ccfa9104680/a1331d86-9124-4791-ba91-53425705cc2c"
+          (reference "U4")
           (unit 1)))))
 
   (symbol
@@ -2154,6 +2162,10 @@
       (project "step-counter"
         (path "/095499dc-c176-488b-b080-3ddce1879d6f"
           (reference "#PWR003")
+          (unit 1)))
+      (project "main"
+        (path "/9c9cf26b-8777-4e0a-bc85-0ccfa9104680/a1331d86-9124-4791-ba91-53425705cc2c"
+          (reference "#PWR23")
           (unit 1)))))
 
   (symbol
@@ -2208,6 +2220,10 @@
       (project "step-counter"
         (path "/095499dc-c176-488b-b080-3ddce1879d6f"
           (reference "#PWR002")
+          (unit 1)))
+      (project "main"
+        (path "/9c9cf26b-8777-4e0a-bc85-0ccfa9104680/a1331d86-9124-4791-ba91-53425705cc2c"
+          (reference "#PWR24")
           (unit 1)))))
 
   (symbol
@@ -2262,6 +2278,10 @@
       (project "step-counter"
         (path "/095499dc-c176-488b-b080-3ddce1879d6f"
           (reference "#PWR004")
+          (unit 1)))
+      (project "main"
+        (path "/9c9cf26b-8777-4e0a-bc85-0ccfa9104680/a1331d86-9124-4791-ba91-53425705cc2c"
+          (reference "#PWR25")
           (unit 1)))))
 
   (symbol
@@ -2316,6 +2336,10 @@
       (project "step-counter"
         (path "/095499dc-c176-488b-b080-3ddce1879d6f"
           (reference "#PWR007")
+          (unit 1)))
+      (project "main"
+        (path "/9c9cf26b-8777-4e0a-bc85-0ccfa9104680/a1331d86-9124-4791-ba91-53425705cc2c"
+          (reference "#PWR26")
           (unit 1)))))
 
   (symbol
@@ -2395,6 +2419,10 @@
       (project "step-counter"
         (path "/095499dc-c176-488b-b080-3ddce1879d6f"
           (reference "U2")
+          (unit 2)))
+      (project "main"
+        (path "/9c9cf26b-8777-4e0a-bc85-0ccfa9104680/a1331d86-9124-4791-ba91-53425705cc2c"
+          (reference "U3")
           (unit 2)))))
 
   (symbol
@@ -2449,6 +2477,10 @@
       (project "step-counter"
         (path "/095499dc-c176-488b-b080-3ddce1879d6f"
           (reference "#PWR009")
+          (unit 1)))
+      (project "main"
+        (path "/9c9cf26b-8777-4e0a-bc85-0ccfa9104680/a1331d86-9124-4791-ba91-53425705cc2c"
+          (reference "#PWR27")
           (unit 1)))))
 
   (symbol
@@ -2528,6 +2560,10 @@
       (project "step-counter"
         (path "/095499dc-c176-488b-b080-3ddce1879d6f"
           (reference "U2")
+          (unit 1)))
+      (project "main"
+        (path "/9c9cf26b-8777-4e0a-bc85-0ccfa9104680/a1331d86-9124-4791-ba91-53425705cc2c"
+          (reference "U3")
           (unit 1)))))
 
   (symbol
@@ -2582,6 +2618,10 @@
       (project "step-counter"
         (path "/095499dc-c176-488b-b080-3ddce1879d6f"
           (reference "#PWR005")
+          (unit 1)))
+      (project "main"
+        (path "/9c9cf26b-8777-4e0a-bc85-0ccfa9104680/a1331d86-9124-4791-ba91-53425705cc2c"
+          (reference "#PWR28")
           (unit 1)))))
 
   (symbol
@@ -2636,6 +2676,10 @@
       (project "step-counter"
         (path "/095499dc-c176-488b-b080-3ddce1879d6f"
           (reference "#PWR001")
+          (unit 1)))
+      (project "main"
+        (path "/9c9cf26b-8777-4e0a-bc85-0ccfa9104680/a1331d86-9124-4791-ba91-53425705cc2c"
+          (reference "#PWR29")
           (unit 1)))))
 
   (symbol
@@ -2715,6 +2759,10 @@
       (project "step-counter"
         (path "/095499dc-c176-488b-b080-3ddce1879d6f"
           (reference "U2")
+          (unit 5)))
+      (project "main"
+        (path "/9c9cf26b-8777-4e0a-bc85-0ccfa9104680/a1331d86-9124-4791-ba91-53425705cc2c"
+          (reference "U3")
           (unit 5)))))
 
   (symbol
@@ -2769,6 +2817,10 @@
       (project "step-counter"
         (path "/095499dc-c176-488b-b080-3ddce1879d6f"
           (reference "#PWR006")
+          (unit 1)))
+      (project "main"
+        (path "/9c9cf26b-8777-4e0a-bc85-0ccfa9104680/a1331d86-9124-4791-ba91-53425705cc2c"
+          (reference "#PWR30")
           (unit 1)))))
 
   (symbol
@@ -2848,6 +2900,10 @@
       (project "step-counter"
         (path "/095499dc-c176-488b-b080-3ddce1879d6f"
           (reference "U2")
+          (unit 4)))
+      (project "main"
+        (path "/9c9cf26b-8777-4e0a-bc85-0ccfa9104680/a1331d86-9124-4791-ba91-53425705cc2c"
+          (reference "U3")
           (unit 4)))))
 
   (symbol
@@ -2902,6 +2958,10 @@
       (project "step-counter"
         (path "/095499dc-c176-488b-b080-3ddce1879d6f"
           (reference "#PWR008")
+          (unit 1)))
+      (project "main"
+        (path "/9c9cf26b-8777-4e0a-bc85-0ccfa9104680/a1331d86-9124-4791-ba91-53425705cc2c"
+          (reference "#PWR31")
           (unit 1)))))
 
   (symbol
@@ -2938,6 +2998,10 @@
       (project "step-counter"
         (path "/095499dc-c176-488b-b080-3ddce1879d6f"
           (reference "C1")
+          (unit 1)))
+      (project "main"
+        (path "/9c9cf26b-8777-4e0a-bc85-0ccfa9104680/a1331d86-9124-4791-ba91-53425705cc2c"
+          (reference "C7")
           (unit 1)))))
 
   (symbol
@@ -2974,6 +3038,10 @@
       (project "step-counter"
         (path "/095499dc-c176-488b-b080-3ddce1879d6f"
           (reference "C2")
+          (unit 1)))
+      (project "main"
+        (path "/9c9cf26b-8777-4e0a-bc85-0ccfa9104680/a1331d86-9124-4791-ba91-53425705cc2c"
+          (reference "C8")
           (unit 1)))))
 
   (symbol
@@ -3011,6 +3079,10 @@
       (project "step-counter"
         (path "/095499dc-c176-488b-b080-3ddce1879d6f"
           (reference "#PWR010")
+          (unit 1)))
+      (project "main"
+        (path "/9c9cf26b-8777-4e0a-bc85-0ccfa9104680/a1331d86-9124-4791-ba91-53425705cc2c"
+          (reference "#PWR32")
           (unit 1)))))
 
   (symbol
@@ -3048,6 +3120,10 @@
       (project "step-counter"
         (path "/095499dc-c176-488b-b080-3ddce1879d6f"
           (reference "#PWR011")
+          (unit 1)))
+      (project "main"
+        (path "/9c9cf26b-8777-4e0a-bc85-0ccfa9104680/a1331d86-9124-4791-ba91-53425705cc2c"
+          (reference "#PWR33")
           (unit 1)))))
 
   (symbol
@@ -3085,6 +3161,10 @@
       (project "step-counter"
         (path "/095499dc-c176-488b-b080-3ddce1879d6f"
           (reference "#PWR012")
+          (unit 1)))
+      (project "main"
+        (path "/9c9cf26b-8777-4e0a-bc85-0ccfa9104680/a1331d86-9124-4791-ba91-53425705cc2c"
+          (reference "#PWR34")
           (unit 1)))))
 
   (symbol
@@ -3122,6 +3202,10 @@
       (project "step-counter"
         (path "/095499dc-c176-488b-b080-3ddce1879d6f"
           (reference "#PWR013")
+          (unit 1)))
+      (project "main"
+        (path "/9c9cf26b-8777-4e0a-bc85-0ccfa9104680/a1331d86-9124-4791-ba91-53425705cc2c"
+          (reference "#PWR35")
           (unit 1)))))
   (embedded_fonts no)
 

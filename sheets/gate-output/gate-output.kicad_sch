@@ -674,6 +674,10 @@
       (project "gate-output"
         (path "/0326d8ab-cd64-47ed-90bf-a8c76da095f1"
           (reference "D1")
+          (unit 1)))
+      (project "main"
+        (path "/9c9cf26b-8777-4e0a-bc85-0ccfa9104680/053d5fd6-b646-4000-b38f-4d6971e9c806"
+          (reference "D12")
           (unit 1)))))
 
   (symbol
@@ -728,6 +732,10 @@
       (project "gate-output"
         (path "/0326d8ab-cd64-47ed-90bf-a8c76da095f1"
           (reference "#FLG01")
+          (unit 1)))
+      (project "main"
+        (path "/9c9cf26b-8777-4e0a-bc85-0ccfa9104680/053d5fd6-b646-4000-b38f-4d6971e9c806"
+          (reference "#FLG08")
           (unit 1)))))
 
   (symbol
@@ -782,6 +790,10 @@
       (project "gate-output"
         (path "/0326d8ab-cd64-47ed-90bf-a8c76da095f1"
           (reference "#PWR001")
+          (unit 1)))
+      (project "main"
+        (path "/9c9cf26b-8777-4e0a-bc85-0ccfa9104680/053d5fd6-b646-4000-b38f-4d6971e9c806"
+          (reference "#PWR81")
           (unit 1)))))
 
   (symbol
@@ -836,6 +848,10 @@
       (project "gate-output"
         (path "/0326d8ab-cd64-47ed-90bf-a8c76da095f1"
           (reference "#PWR002")
+          (unit 1)))
+      (project "main"
+        (path "/9c9cf26b-8777-4e0a-bc85-0ccfa9104680/053d5fd6-b646-4000-b38f-4d6971e9c806"
+          (reference "#PWR82")
           (unit 1)))))
 
   (symbol
@@ -891,6 +907,10 @@
       (project "gate-output"
         (path "/0326d8ab-cd64-47ed-90bf-a8c76da095f1"
           (reference "R1")
+          (unit 1)))
+      (project "main"
+        (path "/9c9cf26b-8777-4e0a-bc85-0ccfa9104680/053d5fd6-b646-4000-b38f-4d6971e9c806"
+          (reference "R11")
           (unit 1)))))
 
   (symbol
@@ -946,6 +966,10 @@
       (project "gate-output"
         (path "/0326d8ab-cd64-47ed-90bf-a8c76da095f1"
           (reference "D2")
+          (unit 1)))
+      (project "main"
+        (path "/9c9cf26b-8777-4e0a-bc85-0ccfa9104680/053d5fd6-b646-4000-b38f-4d6971e9c806"
+          (reference "D13")
           (unit 1)))))
 
   (symbol
@@ -1000,6 +1024,10 @@
       (project "gate-output"
         (path "/0326d8ab-cd64-47ed-90bf-a8c76da095f1"
           (reference "#FLG02")
+          (unit 1)))
+      (project "main"
+        (path "/9c9cf26b-8777-4e0a-bc85-0ccfa9104680/053d5fd6-b646-4000-b38f-4d6971e9c806"
+          (reference "#FLG09")
           (unit 1)))))
   (embedded_fonts no)
 
