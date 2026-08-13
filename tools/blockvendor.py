@@ -363,7 +363,13 @@ def circuit_diff(a, b):
     if kb - ka: out.append(f'{len(kb-ka)} extra symbol(s) in the vendored sheet')
     for uid in sorted(ka & kb):
         x, y = a['symbols'][uid], b['symbols'][uid]
+        # The symbol's own Reference property is a DISPLAY default, and KiCad
+        # rewrites it to whichever project last had the sheet open: a block that
+        # says U1 comes back as U7 after the module is saved. The authoritative
+        # value is the per-project instance reference compared below, so
+        # comparing this one reports every save as drift.
         for i, field in enumerate(['lib_id', 'reference', 'unit', 'position']):
+            if field == 'reference': continue
             if x[i] != y[i]: out.append(f'symbol {uid[:8]}: {field} {x[i]!r} != {y[i]!r}')
         # Compare only projects present in BOTH. KiCad drops instance data for
         # projects it is not currently opening, so demanding the same set of
