@@ -209,6 +209,94 @@ def transform(sheet_text, spec, symlib_text=None):
     return text, notes
 
 
+# ------------------------------------------------------------------ semantics
+def circuit(text):
+    """A formatting-independent fingerprint of what the sheet actually is.
+
+    Everything electrical, nothing cosmetic. KiCad rewrites child sheets on
+    every save — reindenting, pruning unused lib_symbols, reordering — and a
+    byte comparison calls all of that drift. Connectivity in a schematic is
+    positional, so comparing symbol placement, wire endpoints, junctions and
+    labels compares the circuit itself.
+
+    Symbol identity is the uuid, which survives a resave; reference and unit are
+    values to compare, not identity, because moving a gate is exactly what we
+    are checking for.
+    """
+    top = balanced(text, text.index('(lib_symbols'))
+    body = text[top:]
+    syms = {}
+    for st, en in blocks_of(body, r'symbol\s*\n'):
+        blk = body[st:en]
+        uid = re.search(r'\n\s*\(uuid "([0-9a-f-]+)"\)', blk)
+        lib = re.search(r'\(lib_id "([^"]+)"', blk)
+        ref = re.search(r'\(property "Reference" "([^"]+)"', blk)
+        unit = re.search(r'\(unit (\d+)\)', blk)
+        at = re.search(r'\n\s*\(at ([-\d.]+) ([-\d.]+)(?: ([-\d.]+))?\)', blk)
+        if not (uid and lib): continue
+        inst = tuple(sorted((pr, rr, uu) for pr, rr, uu in re.findall(
+            r'\(project "([^"]+)"\s*\n\s*\(path "[^"]*"\s*\n\s*'
+            r'\(reference "([^"]+)"\)\s*\n\s*\(unit (\d+)\)', blk)))
+        syms[uid.group(1)] = (lib.group(1),
+                              ref.group(1) if ref else None,
+                              unit.group(1) if unit else None,
+                              (round(float(at.group(1)), 3), round(float(at.group(2)), 3),
+                               float(at.group(3) or 0)) if at else None,
+                              dict(((pr, (rr, uu)) for pr, rr, uu in inst)))
+    def pts(head):
+        out = []
+        for st, en in blocks_of(body, head):
+            seg = body[st:en]
+            xy = [(round(float(a), 3), round(float(b), 3))
+                  for a, b in re.findall(r'\(xy ([-\d.]+) ([-\d.]+)\)', seg)]
+            if xy: out.append(tuple(sorted(xy)))
+        return sorted(out)
+    def ats(head):
+        out = []
+        for st, en in blocks_of(body, head):
+            seg = body[st:en]
+            nm = re.match(r'\([a-z_]+ "([^"]*)"', seg)
+            at = re.search(r'\(at ([-\d.]+) ([-\d.]+)', seg)
+            if at: out.append(((nm.group(1) if nm else None),
+                               round(float(at.group(1)), 3), round(float(at.group(2)), 3)))
+        return sorted(out)
+    return {
+        'symbols':   syms,
+        'wires':     pts(r'wire\s*\n'),
+        'junctions': ats(r'junction\s*\n'),
+        'noconnect': ats(r'no_connect\s*\n'),
+        'labels':    ats(r'label "') + ats(r'hierarchical_label "') + ats(r'global_label "'),
+    }
+
+
+def circuit_diff(a, b):
+    """-> [human-readable difference] between two circuit fingerprints."""
+    out = []
+    ka, kb = set(a['symbols']), set(b['symbols'])
+    if ka - kb: out.append(f'{len(ka-kb)} symbol(s) missing from the vendored sheet')
+    if kb - ka: out.append(f'{len(kb-ka)} extra symbol(s) in the vendored sheet')
+    for uid in sorted(ka & kb):
+        x, y = a['symbols'][uid], b['symbols'][uid]
+        for i, field in enumerate(['lib_id', 'reference', 'unit', 'position']):
+            if x[i] != y[i]: out.append(f'symbol {uid[:8]}: {field} {x[i]!r} != {y[i]!r}')
+        # Compare only projects present in BOTH. KiCad drops instance data for
+        # projects it is not currently opening, so demanding the same set of
+        # projects reports every resave as drift and trains you to ignore it.
+        shared = set(x[4]) & set(y[4])
+        for proj in sorted(shared):
+            if x[4][proj] != y[4][proj]:
+                out.append(f'symbol {uid[:8]}: instance[{proj}] '
+                           f'{x[4][proj]!r} != {y[4][proj]!r}')
+        if not shared and (x[4] or y[4]):
+            out.append(f'symbol {uid[:8]}: no project in common '
+                       f'({sorted(x[4])} vs {sorted(y[4])})')
+    for k in ('wires', 'junctions', 'noconnect', 'labels'):
+        if a[k] != b[k]:
+            sa, sb = set(a[k]), set(b[k])
+            out.append(f'{k}: {len(sa-sb)} only in expected, {len(sb-sa)} only in vendored')
+    return out
+
+
 # ---------------------------------------------------------------- lock + checks
 def load_lock(path):
     with open(path) as f: return json.load(f)
@@ -319,14 +407,15 @@ def main():
             print(f'  DRIFT {name}: {rel} has not been generated'); drift += 1; continue
         have = open(dest).read()
         if have == out:
-            print(f'  ok    {name}: {rel}')
+            print(f'  ok    {name}: {rel}  (byte identical)')
+            continue
+        d = circuit_diff(circuit(out), circuit(have))
+        if not d:
+            print(f'  ok    {name}: {rel}  (same circuit, reformatted)')
         else:
             drift += 1
-            print(f'  DRIFT {name}: {rel} differs from block + permutation')
-            for line in list(difflib.unified_diff(
-                    have.splitlines(), out.splitlines(),
-                    'vendored', 'regenerated', lineterm='', n=1))[:12]:
-                print(f'        {line}')
+            print(f'  DRIFT {name}: {rel} is not the block plus its permutation')
+            for line in d[:10]: print(f'        {line}')
     print(f'  {drift} block(s) drifted')
     return 1 if drift else 0
 

@@ -109,6 +109,26 @@ def main():
           len(re.findall(r'\(wire\b', out)) < len(re.findall(r'\(wire\b', sheet)),
           f'({nflag} flag references in the source)')
 
+    # ---- the verifier must ignore formatting and catch circuit changes
+    import re as _re
+    def resave(t):
+        """What KiCad does on a save: reindent, and drop instance data for
+        projects it is not currently opening."""
+        t = _re.sub(r'\n\t+', lambda m: '\n' + '  ' * (len(m.group(0)) - 1), t)
+        return _re.sub(r'\s*\(project "cv-mux-8"\s*\n\s*\(path "[^"]*"\s*\n\s*'
+                       r'\(reference "[^"]+"\)\s*\n\s*\(unit \d+\)\)\)', '', t)
+    reformatted = resave(out)
+    check('a resave is not drift', reformatted != out and
+          BV.circuit_diff(BV.circuit(out), BV.circuit(reformatted)) == [])
+    tail_at = reformatted.index('(symbol', reformatted.index('"4066_5_1"'))
+    tail = reformatted[tail_at:]
+    m = list(_re.finditer(r'\(unit 3\)', tail))[-1]
+    changed = reformatted[:tail_at] + tail[:m.start()] + '(unit 2)' + tail[m.end():]
+    d = BV.circuit_diff(BV.circuit(out), BV.circuit(changed))
+    check('a moved gate IS drift, even through a resave', len(d) > 0, str(d[:1]))
+    check('drift names the symbol and the change',
+          bool(d) and 'instance[main]' in d[0], str(d[:1]))
+
     # ---- vendoring is a pure function: same inputs, same bytes
     again, _ = BV.transform(sheet, {'strip': ['PWR_FLAG'], 'units': perm})
     check('transform is deterministic', again == out)
