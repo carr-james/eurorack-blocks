@@ -510,3 +510,30 @@ offers "Delete footprints with no symbols", which without `board_only` would
 remove every fiducial and dowel hole and take the double-sided milling
 registration with them.
 
+## `\s` matches newlines, and that will eat your schematic
+
+Repositioning 40 symbols with
+
+    re.search(r'\n(\s*)\(at ([-\d.]+) ([-\d.]+)(?: ([-\d.]+))?\)', block)
+
+produced a file KiCad refused to load, with balanced parens and no visible
+damage. `\s` includes `\n`, so `\n\s*\(at` can skip past the symbol's own
+position and match a nested `(at ...)` inside a property several lines down.
+The edit then lands in the wrong element.
+
+Use `[ \t]*` when you mean indentation. `\s*` means "any whitespace including
+line breaks", which is almost never what you want in a line-oriented format.
+
+Two things made this expensive to find:
+
+- **`kicad-cli` says only "Failed to load schematic".** No line, no token, no
+  reason. Balanced parens and a clean-looking diff tell you nothing.
+- The obvious suspects were all innocent. Duplicate uuids, instance paths,
+  no-connect formatting and the library symbols were each checked and cleared
+  before the actual cause was reached.
+
+**Bisect by construction, not by inspection.** Rebuilding from a known-good file
+and adding one element at a time found it in a single pass, after inspection had
+failed repeatedly. When a generated file breaks, stop reading it and start
+halving it.
+
