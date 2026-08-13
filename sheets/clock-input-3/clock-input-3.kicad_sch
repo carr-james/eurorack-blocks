@@ -1627,6 +1627,30 @@
       (xy 38.1 200.66))
     (uuid "ee6d483e-dd37-4605-8f5d-16b1fec52e68"))
 
+  (label "CH1_CLAMPED"
+    (at 90.17 63.5 0)
+    (effects
+      (font
+        (size 1.27 1.27))
+      (justify left bottom))
+    (uuid "301b3317-700d-4dba-b630-53decaabdfa8"))
+
+  (label "CH2_CLAMPED"
+    (at 90.17 101.6 0)
+    (effects
+      (font
+        (size 1.27 1.27))
+      (justify left bottom))
+    (uuid "4e5df8bd-fb4c-4948-b7f8-13c3fb613382"))
+
+  (label "CH3_CLAMPED"
+    (at 90.17 139.7 0)
+    (effects
+      (font
+        (size 1.27 1.27))
+      (justify left bottom))
+    (uuid "a008915e-a6ad-413a-b9e6-ad335eb414da"))
+
   (hierarchical_label "IN_1"
     (shape input)
     (at 69.85 63.5 180)
