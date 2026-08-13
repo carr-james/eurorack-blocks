@@ -169,6 +169,61 @@ def apply_units(text, slotmap):
     return out, moved
 
 
+def strip_flags_at(text, positions):
+    """Remove the PWR_FLAG islands at the given source-sheet coordinates.
+
+    The blunt instrument, for a flag whose rail cannot be named. A flag wired to
+    a component PIN rather than to a bare power symbol has no rail visible in
+    the sheet's own geometry, so the lock names the coordinate instead.
+
+    Only the flag and its stub wires go. An earlier version keyed on the rail
+    and also removed the power symbol at the far end, which in regulator-5v is
+    U1's +12VA feed rather than part of the island: stripping the flag took the
+    regulator's supply with it.
+
+    Brittle by nature, which is why check() insists a flag really is there. If
+    the block moves and the coordinate goes stale, vendoring fails rather than
+    quietly stripping nothing.
+    """
+    want = {(round(float(x), 2), round(float(y), 2)) for x, y in positions}
+    top = balanced(text, text.index('(lib_symbols'))
+    syms = []
+    for st, en in blocks_of(text, r'symbol\s*\n', top):
+        blk = text[st:en]
+        lib = re.search(r'\(lib_id "([^"]+)"', blk)
+        at = re.search(r'\n\s*\(at ([-\d.]+) ([-\d.]+)', blk)
+        if lib and at:
+            syms.append((st, en, lib.group(1),
+                         (round(float(at.group(1)), 2), round(float(at.group(2)), 2))))
+    wires = []
+    for ws, we in blocks_of(text, r'wire\s*\n'):
+        xy = [(round(float(x), 2), round(float(y), 2))
+              for x, y in re.findall(r'\(xy ([-\d.]+) ([-\d.]+)\)', text[ws:we])][:2]
+        if len(xy) == 2: wires.append((ws, we, xy[0], xy[1]))
+    edits, removed = [], 0
+    for st, en, lib, pos in syms:
+        if 'PWR_FLAG' not in lib or pos not in want: continue
+        edits.append((st, en)); removed += 1
+        for ws, we, p0, p1 in wires:
+            if pos in (p0, p1): edits.append((ws, we))
+    out = text
+    for x, y in sorted(set(edits), reverse=True): out = out[:x] + out[y:]
+    return out, removed
+
+
+def flags_at(text):
+    """Coordinates of every PWR_FLAG in a sheet, for check() to validate against."""
+    top = balanced(text, text.index('(lib_symbols'))
+    out = set()
+    for st, en in blocks_of(text, r'symbol\s*\n', top):
+        blk = text[st:en]
+        lib = re.search(r'\(lib_id "([^"]+)"', blk)
+        at = re.search(r'\n\s*\(at ([-\d.]+) ([-\d.]+)', blk)
+        if lib and at and 'PWR_FLAG' in lib.group(1):
+            out.add((round(float(at.group(1)), 2), round(float(at.group(2)), 2)))
+    return out
+
+
 def strip_symbols(text, lib_match):
     """Remove a PWR_FLAG and the whole island it sits on.
 
@@ -225,6 +280,10 @@ def transform(sheet_text, spec, symlib_text=None):
     for lib in spec.get('strip', []):
         text, n = strip_symbols(text, lib)
         notes.append(f'stripped {n} {lib}')
+    at = spec.get('strip_flags_at', [])
+    if at:
+        text, n = strip_flags_at(text, at)
+        notes.append(f'stripped {n} flag(s) by position')
     at = spec.get('strip_flags_at', [])
     if at:
         text, n = strip_flags_at(text, at)

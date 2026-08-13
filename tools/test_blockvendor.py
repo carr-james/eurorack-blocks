@@ -129,6 +129,24 @@ def main():
     check('drift names the symbol and the change',
           bool(d) and 'instance[main]' in d[0], str(d[:1]))
 
+    # ---- positional flag strip: the regression that a passing suite missed
+    flags = BV.flags_at(sheet)
+    check('flags_at finds the block\'s PWR_FLAGs', len(flags) >= 1, str(flags))
+    if flags:
+        one = sorted(flags)[0]
+        stripped, n = BV.strip_flags_at(sheet, [one])
+        check('strip_flags_at removes exactly the named flag', n == 1)
+        check('strip_flags_at leaves the other flags alone',
+              len(BV.flags_at(stripped)) == len(flags) - 1)
+        pw = lambda t: sum(1 for st, en in BV.blocks_of(
+            t, r'symbol\s*\n', BV.balanced(t, t.index('(lib_symbols')))
+            if 'power:' in t[st:en] and 'PWR_FLAG' not in t[st:en])
+        check('strip_flags_at does NOT remove the power symbol beside it',
+              pw(stripped) == pw(sheet),
+              '(removing it took the regulator supply with it)')
+    check('strip_flags_at ignores a coordinate with no flag',
+          BV.strip_flags_at(sheet, [(1.0, 1.0)])[1] == 0)
+
     # ---- vendoring is a pure function: same inputs, same bytes
     again, _ = BV.transform(sheet, {'strip': ['PWR_FLAG'], 'units': perm})
     check('transform is deterministic', again == out)
