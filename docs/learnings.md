@@ -436,3 +436,44 @@ the real one.
 upstream `kicad-packages3D` repository still publishes the WRL files that the
 installer drops. Download them. FreeCAD is only needed for parts KiCad does not
 ship, and for custom variants.
+
+## A submodule is a different checkout, not a view
+
+`eurorack-common-library/` and `step-sequencer-8/hardware/shared/` are two
+working copies of the same repository. Editing the first does nothing for a
+project that reads the second.
+
+Symbols vendored into the parent copy produced
+
+```
+[lib_symbol_issues]: Symbol 'Conn_02x07_Odd_Even' not found in symbol
+library 'Eurorack Common'
+```
+
+while the file on disk plainly contained the symbol. The project's
+`sym-lib-table` resolves `${KIPRJMOD}/../shared/`, which is the submodule.
+
+The proper sequence is commit in the library repo, push, then move the
+submodule pin. Copying the files across the two checkouts unblocks the work but
+leaves the submodule dirty, and the pin still has to move before anyone else
+can build the board.
+
+**Check which copy a project reads before editing a shared library.** ERC will
+tell you, but only after you have already done the work twice.
+
+## Count pins from the file, never from the pitch
+
+Widening a connector from 1x14 to 1x18, I worked out where the four new pins
+were by adding 2.54mm steps to pin 1. That put pins 15 to 18 at the
+coordinates of pins **13 to 16**, because the symbol had already been replaced
+and re-centred underneath me.
+
+Three of the four collisions were harmless, since those pins were ground
+already. The fourth grounded `GATE_JACK`. The schematic looked right, ERC
+passed the connection, and the fault only appeared as a net that had silently
+vanished from the netlist: `GATE_JACK` was gone because it had merged into
+`GND`.
+
+Query the pin positions back from the file after any symbol swap. A net that
+disappears from a netlist is as much a defect as one that appears wrong, so
+check for absences and not only for errors.
