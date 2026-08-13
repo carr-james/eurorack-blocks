@@ -12,11 +12,42 @@ Requires KiCad 10.
 
 ## Reuse mechanism
 
-Circuits are hierarchical sheets. This is the only reuse mechanism here.
+Circuits are hierarchical sheets. A module consumes one in either of two ways.
 
-A sheet keeps one definition. A project references the sheet file through this
-repo as a submodule. An edit reaches every project that updates the submodule
-pin.
+**By reference.** The module's root sheet points straight at the file through
+this repo as a submodule, and an edit reaches every project that moves its pin.
+Simple, and right for a block the module has no reason to alter.
+
+**By vendoring.** The module keeps a generated copy plus a record of exactly how
+it differs, and `tools/blockvendor.py` proves the two still match.
+
+    blocks.lock -> block sheet + declared permutation -> vendored sheet
+
+Vendoring exists because a module wants to permute what is genuinely free to
+permute. Which CD4066 switch carries which channel is arbitrary, and choosing
+well was worth a third of the ratsnest crossings on `step-sequencer-8`. Editing
+the shared block to suit one board is not acceptable, and giving up the freedom
+is expensive, so the difference is recorded instead of argued about.
+
+Because the permutation is recorded rather than discovered, verification is a
+diff and not a graph isomorphism search. What must be proved is that the
+permutation is *legal*, and `blockvendor check` does that from the symbol
+library: units with matching pin counts and electrical types, carrying no power
+pin. A CD4017 correctly has none, since its outputs are a counting sequence.
+
+`blockvendor verify` compares the circuit rather than the bytes, because KiCad
+rewrites a child sheet on every save. Run it before you trust a vendored sheet.
+
+### Vendoring also settles the PWR_FLAG question
+
+A block flags every rail it touches so it passes ERC standing alone, which is
+what a breakout needs. In a module only the block that *sources* a rail may
+assert it, or ERC sees two drivers.
+
+That is a genuine conflict between two audiences, and it is why nine blocks in
+one module produced 19 `pin_to_pin` errors. The vendor step strips the flags
+where the module has its own source, declared in the lock, so the block keeps
+what it needs and the module gets what it needs.
 
 This is proven, not assumed. A parent that referenced this repo's power input
 sheet listed the child components in its netlist, and a value changed in the
