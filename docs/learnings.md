@@ -477,3 +477,36 @@ vanished from the netlist: `GATE_JACK` was gone because it had merged into
 Query the pin positions back from the file after any symbol swap. A net that
 disappears from a netlist is as much a defect as one that appears wrong, so
 check for absences and not only for errors.
+
+## Registration features need board_only, or parity calls them errors
+
+Fiducials and mill dowel holes are on the board and deliberately not in the
+schematic. They are for the machine, not the module. So DRC with schematic
+parity enabled reports every one of them:
+
+```
+Found 7 schematic parity issues
+  7 [extra_footprint]     FID1..3, MH1..4
+```
+
+The fix is not to disable the check. Mark them `board_only` in the footprint's
+attributes, which is KiCad's way of saying "this exists on the board by design
+and has no symbol":
+
+```
+(attr smd board_only exclude_from_bom)
+(attr board_only exclude_from_pos_files exclude_from_bom allow_missing_courtyard)
+```
+
+`exclude_from_bom` alone is not enough — that only keeps them out of the parts
+list. Parity is a separate question and needs its own answer.
+
+Do this when the registration features are added, not after. Seven spurious
+errors is enough noise to make people switch parity off, and parity is the check
+that would catch a real mismatch between board and schematic.
+
+**The same attribute protects them from deletion.** Update PCB from Schematic
+offers "Delete footprints with no symbols", which without `board_only` would
+remove every fiducial and dowel hole and take the double-sided milling
+registration with them.
+
