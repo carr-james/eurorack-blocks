@@ -1056,235 +1056,63 @@
     (diameter 0)
     (uuid "85b28e53-98f0-4063-ba1c-af8e4cda7623"))
 
-  (junction
-    (at 105.41 63.5)
-    (diameter 0)
-    (uuid "46e745e6-7a7c-4d4e-bb04-cd5dab5c5296"))
 
-  (junction
-    (at 105.41 63.5)
-    (diameter 0)
-    (uuid "29bd4031-fbd5-468c-86d6-bb267f1b9584"))
 
-  (junction
-    (at 105.41 63.5)
-    (diameter 0)
-    (uuid "e42eb89f-6488-4bc2-b36a-5019a7c8c2d9"))
 
-  (junction
-    (at 105.41 63.5)
-    (diameter 0)
-    (uuid "ca1d2182-5e21-4fec-90a1-bd80d3bfe365"))
 
-  (junction
-    (at 105.41 63.5)
-    (diameter 0)
-    (uuid "9ae666e8-3cbf-46b1-8027-49f12aa8ed2f"))
 
-  (junction
-    (at 105.41 63.5)
-    (diameter 0)
-    (uuid "227b90ae-a514-4158-8379-392e414bbc51"))
 
-  (junction
-    (at 105.41 63.5)
-    (diameter 0)
-    (uuid "8e814ae3-d474-40db-a4a3-55e3a9790fbf"))
 
-  (junction
-    (at 105.41 63.5)
-    (diameter 0)
-    (uuid "0d31a1bb-5dd8-4ef0-9b4a-382039ca8d1a"))
 
-  (junction
-    (at 105.41 63.5)
-    (diameter 0)
-    (uuid "edf474d3-b9ae-41d2-9c98-f7db9d4f517e"))
 
-  (junction
-    (at 105.41 63.5)
-    (diameter 0)
-    (uuid "923597f8-52fa-41c9-a22e-11f1023b9118"))
 
   (junction
     (at 105.41 101.6)
     (diameter 0)
     (uuid "fd1e9c19-ffe3-415c-a812-3d060ade324d"))
 
-  (junction
-    (at 105.41 63.5)
-    (diameter 0)
-    (uuid "b6c76a52-2d00-49e2-8472-b4738aa5628b"))
 
-  (junction
-    (at 105.41 101.6)
-    (diameter 0)
-    (uuid "b41ab6b7-4c64-4845-9a8d-f66444d6a694"))
 
-  (junction
-    (at 105.41 63.5)
-    (diameter 0)
-    (uuid "6430a23b-e72b-4b21-a219-73982a5ad937"))
 
-  (junction
-    (at 105.41 101.6)
-    (diameter 0)
-    (uuid "ba86d80a-b6ac-48fa-b8df-6570b3d6d7f5"))
 
-  (junction
-    (at 105.41 63.5)
-    (diameter 0)
-    (uuid "e16286a1-7896-4109-9bf3-a04dc34aaf1b"))
 
-  (junction
-    (at 105.41 101.6)
-    (diameter 0)
-    (uuid "fae73edd-9c3a-4b11-8a85-f7b40677dd22"))
 
-  (junction
-    (at 105.41 63.5)
-    (diameter 0)
-    (uuid "1fe29769-bae2-4707-b602-827e10c84dcb"))
 
-  (junction
-    (at 105.41 101.6)
-    (diameter 0)
-    (uuid "d1d9744a-ae91-457b-840d-b75c67a398a6"))
 
-  (junction
-    (at 105.41 63.5)
-    (diameter 0)
-    (uuid "a7ff8d88-38dc-490a-be1b-95ec36f43788"))
 
-  (junction
-    (at 105.41 101.6)
-    (diameter 0)
-    (uuid "a0fe6ce8-5c84-4e5f-82bd-97b947e980db"))
 
-  (junction
-    (at 105.41 63.5)
-    (diameter 0)
-    (uuid "fd48ffdd-02db-4596-812f-c5e4a9bf97f9"))
 
-  (junction
-    (at 105.41 101.6)
-    (diameter 0)
-    (uuid "d09539fa-7821-454d-af34-b4723320afcc"))
 
-  (junction
-    (at 105.41 63.5)
-    (diameter 0)
-    (uuid "8d9b44fe-aecf-40e4-8a88-da46463cc7e5"))
 
-  (junction
-    (at 105.41 101.6)
-    (diameter 0)
-    (uuid "73c13203-6d99-47d4-99b6-861893704012"))
 
-  (junction
-    (at 105.41 63.5)
-    (diameter 0)
-    (uuid "1b0be351-4dcf-4cd5-9e12-048cd540cb8d"))
 
-  (junction
-    (at 105.41 101.6)
-    (diameter 0)
-    (uuid "e74dc709-3814-40c5-a1f7-b44f129cc621"))
 
-  (junction
-    (at 105.41 63.5)
-    (diameter 0)
-    (uuid "967f9ae9-5640-45a4-8527-e4731be1af49"))
 
-  (junction
-    (at 105.41 101.6)
-    (diameter 0)
-    (uuid "c49f64a4-9035-40b9-b7e2-c629130fcfda"))
 
-  (junction
-    (at 105.41 63.5)
-    (diameter 0)
-    (uuid "c8aae850-51c7-484a-aeef-3f3cf37bf3b1"))
 
-  (junction
-    (at 105.41 101.6)
-    (diameter 0)
-    (uuid "514d7aaf-45c6-436a-a8bf-025ba73568ce"))
 
   (junction
     (at 105.41 139.7)
     (diameter 0)
     (uuid "0bc025b8-80b3-4a0f-a6b0-e567dec61ba5"))
 
-  (junction
-    (at 105.41 63.5)
-    (diameter 0)
-    (uuid "2c01179e-87d1-4d6f-b158-a380f1e9e54e"))
 
-  (junction
-    (at 105.41 101.6)
-    (diameter 0)
-    (uuid "7d41b6d1-e9f4-4720-9b4f-99857829769a"))
 
-  (junction
-    (at 105.41 139.7)
-    (diameter 0)
-    (uuid "c422c81c-d853-4c95-adc6-19f7a4f5b4c8"))
 
-  (junction
-    (at 105.41 63.5)
-    (diameter 0)
-    (uuid "0b37bc87-0e39-462d-a1d7-9719c111dd77"))
 
-  (junction
-    (at 105.41 101.6)
-    (diameter 0)
-    (uuid "e59f99ee-43aa-4fae-8351-e72beaa5ead6"))
 
-  (junction
-    (at 105.41 139.7)
-    (diameter 0)
-    (uuid "bccbacc2-92d7-4ba6-a9e0-5f5138390394"))
 
-  (junction
-    (at 105.41 63.5)
-    (diameter 0)
-    (uuid "56b36fb0-40d3-44d3-9daa-6fbf001bbc2d"))
 
-  (junction
-    (at 105.41 101.6)
-    (diameter 0)
-    (uuid "f22a5a6e-2713-4c42-a0d0-a281da2823cd"))
 
-  (junction
-    (at 105.41 139.7)
-    (diameter 0)
-    (uuid "a39656ab-1b2c-4244-9681-af16a4496f39"))
 
-  (junction
-    (at 105.41 63.5)
-    (diameter 0)
-    (uuid "ee594892-4f8f-42cc-9025-2547278c3d9e"))
 
-  (junction
-    (at 105.41 101.6)
-    (diameter 0)
-    (uuid "942308da-3438-486e-8401-879f77c0b250"))
 
-  (junction
-    (at 105.41 139.7)
-    (diameter 0)
-    (uuid "75f22609-38bd-4932-827a-3f2f423553b6"))
 
   (junction
     (at 95.25 63.5)
     (diameter 0)
     (uuid "60048961-e7fa-48eb-9e9e-faa9fdcd756f"))
 
-  (junction
-    (at 105.41 63.5)
-    (diameter 0)
-    (uuid "f02c9ae7-1f63-4537-8c36-8c46b7399b2f"))
 
   (junction
     (at 100.33 78.74)
@@ -1296,10 +1124,6 @@
     (diameter 0)
     (uuid "c9407d4e-6516-4430-b5ab-100d503cf69f"))
 
-  (junction
-    (at 105.41 101.6)
-    (diameter 0)
-    (uuid "98d2a4d9-7f5b-4b8c-b97e-43383ec9a1a5"))
 
   (junction
     (at 100.33 116.84)
@@ -1311,105 +1135,29 @@
     (diameter 0)
     (uuid "2f7d6deb-e3a7-429a-aac9-3ce0a2c021dc"))
 
-  (junction
-    (at 105.41 139.7)
-    (diameter 0)
-    (uuid "f36c26a4-c895-4907-bb06-91d751345fed"))
 
   (junction
     (at 100.33 154.94)
     (diameter 0)
     (uuid "598d9436-c633-4227-a41b-51974df6ec87"))
 
-  (junction
-    (at 105.41 63.5)
-    (diameter 0)
-    (uuid "1a1d6d21-6b99-4be4-8820-79aafbb82886"))
 
-  (junction
-    (at 105.41 101.6)
-    (diameter 0)
-    (uuid "255a51c7-ffed-4fa5-ad97-55ce47887c56"))
 
-  (junction
-    (at 105.41 139.7)
-    (diameter 0)
-    (uuid "e576cc48-d234-4177-b98e-7366281c506d"))
 
-  (junction
-    (at 105.41 63.5)
-    (diameter 0)
-    (uuid "aaf85e15-e6c7-4cbe-9ab7-927da94f12aa"))
 
-  (junction
-    (at 105.41 101.6)
-    (diameter 0)
-    (uuid "b800365d-9e42-4646-9305-ea29ad78e1fd"))
 
-  (junction
-    (at 105.41 139.7)
-    (diameter 0)
-    (uuid "f8a49ec2-29fe-480e-9dae-247880171245"))
 
-  (junction
-    (at 105.41 63.5)
-    (diameter 0)
-    (uuid "488c122e-35bc-4474-b40a-35bd242dfac1"))
 
-  (junction
-    (at 105.41 101.6)
-    (diameter 0)
-    (uuid "d4b8da74-3ee5-4cdc-b02e-71eed382dc05"))
 
-  (junction
-    (at 105.41 139.7)
-    (diameter 0)
-    (uuid "f064f0fc-fd50-4061-acff-73f1725c60f7"))
 
-  (junction
-    (at 105.41 63.5)
-    (diameter 0)
-    (uuid "ae6b408f-c0f2-4412-a687-98f47b5cde80"))
 
-  (junction
-    (at 105.41 101.6)
-    (diameter 0)
-    (uuid "ab7f88f4-9358-4db2-8a0c-6af852cd2e2c"))
 
-  (junction
-    (at 105.41 139.7)
-    (diameter 0)
-    (uuid "71389ef0-4cba-4104-8120-6644fee8c5ec"))
 
-  (junction
-    (at 105.41 63.5)
-    (diameter 0)
-    (uuid "7f7ac517-cf62-4159-84d2-2753e6615065"))
 
-  (junction
-    (at 105.41 101.6)
-    (diameter 0)
-    (uuid "d0adde4a-e7d0-4731-abb4-3b1421011f73"))
 
-  (junction
-    (at 105.41 139.7)
-    (diameter 0)
-    (uuid "11e76cde-94c3-499d-a24f-b2921364dfab"))
 
-  (junction
-    (at 105.41 63.5)
-    (diameter 0)
-    (uuid "427125de-6db6-424e-bfeb-53fe64d18c02"))
 
-  (junction
-    (at 105.41 101.6)
-    (diameter 0)
-    (uuid "64555651-3939-4974-ace6-61f04f6b76aa"))
 
-  (junction
-    (at 105.41 139.7)
-    (diameter 0)
-    (uuid "aba41282-1123-4ddd-bb8c-28dc05f998a0"))
 
   (wire
     (pts
