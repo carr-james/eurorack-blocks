@@ -169,28 +169,91 @@ def apply_units(text, slotmap):
     return out, moved
 
 
-def strip_symbols(text, lib_match):
-    """Remove matching symbol instances and the single stub wire each one hangs
-    on. A PWR_FLAG left in a vendored sheet collides with the module's own power
-    source; removing the symbol but leaving its wire trades one ERC error for
-    another."""
-    out, removed = text, 0
+def strip_flag_nets(text, nets):
+    """Remove PWR_FLAG islands that assert one of `nets`.
+
+    A block flags every rail it touches so it passes ERC standing alone, which
+    is what a breakout needs. In a module only the block that SOURCES a rail may
+    assert it: power-input drives +12VA from J1, so regulator-5v asserting it
+    too is a second driver as far as ERC is concerned.
+
+    Only islands of the shape flag-wire-power-symbol are considered, so a flag
+    wired into live circuitry is never touched.
+    """
     top = balanced(text, text.index('(lib_symbols'))
-    kill_pts, edits = [], []
+    syms = []
     for st, en in blocks_of(text, r'symbol\s*\n', top):
         blk = text[st:en]
         lib = re.search(r'\(lib_id "([^"]+)"', blk)
-        if not lib or lib_match not in lib.group(1): continue
+        val = re.search(r'\(property "Value" "([^"]*)"', blk)
         at = re.search(r'\n\s*\(at ([-\d.]+) ([-\d.]+)', blk)
-        if at: kill_pts.append((round(float(at.group(1)), 3), round(float(at.group(2)), 3)))
-        edits.append((st, en, '')); removed += 1
+        if lib and at:
+            syms.append((st, en, lib.group(1), val.group(1) if val else '',
+                         (round(float(at.group(1)), 3), round(float(at.group(2)), 3))))
+    wires = []
     for ws, we in blocks_of(text, r'wire\s*\n'):
-        seg = text[ws:we]
-        xy = [(round(float(a), 3), round(float(b), 3))
-              for a, b in re.findall(r'\(xy ([-\d.]+) ([-\d.]+)\)', seg)][:2]
-        if len(xy) == 2 and (xy[0] in kill_pts or xy[1] in kill_pts):
-            edits.append((ws, we, ''))
-    for a, b, nb in sorted(set(edits), reverse=True): out = out[:a] + nb + out[b:]
+        xy = [(round(float(x), 3), round(float(y), 3))
+              for x, y in re.findall(r'\(xy ([-\d.]+) ([-\d.]+)\)', text[ws:we])][:2]
+        if len(xy) == 2: wires.append((ws, we, xy[0], xy[1]))
+    edits, removed = [], 0
+    for st, en, lib, _v, pos in syms:
+        if 'PWR_FLAG' not in lib: continue
+        for ws, we, p0, p1 in wires:
+            if pos not in (p0, p1): continue
+            far = p1 if p0 == pos else p0
+            for st2, en2, lib2, val2, pos2 in syms:
+                if pos2 == far and lib2.startswith('power:') and val2 in nets:
+                    edits += [(st, en), (ws, we), (st2, en2)]; removed += 1
+    out = text
+    for x, y in sorted(set(edits), reverse=True): out = out[:x] + out[y:]
+    return out, removed
+
+
+def strip_symbols(text, lib_match):
+    """Remove a PWR_FLAG and the whole island it sits on.
+
+    A flag is never alone: the blocks wire it to a bare power symbol, and that
+    pair is a standalone assertion that the net has a source. Deleting only the
+    flag leaves the power symbol with a dangling pin, which is how removing 19
+    pin_to_pin errors bought 12 pin_not_connected ones.
+
+    The far symbol is only removed when it is a power symbol touching exactly
+    one wire, so anything genuinely wired into the circuit is left alone. Fails
+    safe: leaving a symbol behind is an ERC warning, removing a live one is a
+    broken sheet.
+    """
+    top = balanced(text, text.index('(lib_symbols'))
+    syms = []
+    for st, en in blocks_of(text, r'symbol\s*\n', top):
+        blk = text[st:en]
+        lib = re.search(r'\(lib_id "([^"]+)"', blk)
+        at = re.search(r'\n\s*\(at ([-\d.]+) ([-\d.]+)', blk)
+        if lib and at:
+            syms.append((st, en, lib.group(1),
+                         (round(float(at.group(1)), 3), round(float(at.group(2)), 3))))
+    wires = []
+    for ws, we in blocks_of(text, r'wire\s*\n'):
+        xy = [(round(float(x), 3), round(float(y), 3))
+              for x, y in re.findall(r'\(xy ([-\d.]+) ([-\d.]+)\)', text[ws:we])][:2]
+        if len(xy) == 2: wires.append((ws, we, xy[0], xy[1]))
+    wires_at = {}
+    for _, _, p0, p1 in wires:
+        wires_at[p0] = wires_at.get(p0, 0) + 1
+        wires_at[p1] = wires_at.get(p1, 0) + 1
+
+    edits, removed = [], 0
+    for st, en, lib, pos in syms:
+        if lib_match not in lib: continue
+        edits.append((st, en)); removed += 1
+        for ws, we, p0, p1 in wires:
+            if pos not in (p0, p1): continue
+            edits.append((ws, we))
+            far = p1 if p0 == pos else p0
+            for st2, en2, lib2, pos2 in syms:
+                if pos2 == far and lib2.startswith('power:') and wires_at.get(far, 0) == 1:
+                    edits.append((st2, en2))
+    out = text
+    for x, y in sorted(set(edits), reverse=True): out = out[:x] + out[y:]
     return out, removed
 
 
@@ -202,6 +265,10 @@ def transform(sheet_text, spec, symlib_text=None):
     for lib in spec.get('strip', []):
         text, n = strip_symbols(text, lib)
         notes.append(f'stripped {n} {lib}')
+    nets = spec.get('strip_flag_nets', [])
+    if nets:
+        text, n = strip_flag_nets(text, nets)
+        notes.append(f'stripped {n} flag(s) on {",".join(nets)}')
     units = spec.get('units', {})
     if units:
         text, n = apply_units(text, units)
