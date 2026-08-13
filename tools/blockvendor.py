@@ -169,46 +169,6 @@ def apply_units(text, slotmap):
     return out, moved
 
 
-def strip_flag_nets(text, nets):
-    """Remove PWR_FLAG islands that assert one of `nets`.
-
-    A block flags every rail it touches so it passes ERC standing alone, which
-    is what a breakout needs. In a module only the block that SOURCES a rail may
-    assert it: power-input drives +12VA from J1, so regulator-5v asserting it
-    too is a second driver as far as ERC is concerned.
-
-    Only islands of the shape flag-wire-power-symbol are considered, so a flag
-    wired into live circuitry is never touched.
-    """
-    top = balanced(text, text.index('(lib_symbols'))
-    syms = []
-    for st, en in blocks_of(text, r'symbol\s*\n', top):
-        blk = text[st:en]
-        lib = re.search(r'\(lib_id "([^"]+)"', blk)
-        val = re.search(r'\(property "Value" "([^"]*)"', blk)
-        at = re.search(r'\n\s*\(at ([-\d.]+) ([-\d.]+)', blk)
-        if lib and at:
-            syms.append((st, en, lib.group(1), val.group(1) if val else '',
-                         (round(float(at.group(1)), 3), round(float(at.group(2)), 3))))
-    wires = []
-    for ws, we in blocks_of(text, r'wire\s*\n'):
-        xy = [(round(float(x), 3), round(float(y), 3))
-              for x, y in re.findall(r'\(xy ([-\d.]+) ([-\d.]+)\)', text[ws:we])][:2]
-        if len(xy) == 2: wires.append((ws, we, xy[0], xy[1]))
-    edits, removed = [], 0
-    for st, en, lib, _v, pos in syms:
-        if 'PWR_FLAG' not in lib: continue
-        for ws, we, p0, p1 in wires:
-            if pos not in (p0, p1): continue
-            far = p1 if p0 == pos else p0
-            for st2, en2, lib2, val2, pos2 in syms:
-                if pos2 == far and lib2.startswith('power:') and val2 in nets:
-                    edits += [(st, en), (ws, we), (st2, en2)]; removed += 1
-    out = text
-    for x, y in sorted(set(edits), reverse=True): out = out[:x] + out[y:]
-    return out, removed
-
-
 def strip_symbols(text, lib_match):
     """Remove a PWR_FLAG and the whole island it sits on.
 
@@ -265,10 +225,10 @@ def transform(sheet_text, spec, symlib_text=None):
     for lib in spec.get('strip', []):
         text, n = strip_symbols(text, lib)
         notes.append(f'stripped {n} {lib}')
-    nets = spec.get('strip_flag_nets', [])
-    if nets:
-        text, n = strip_flag_nets(text, nets)
-        notes.append(f'stripped {n} flag(s) on {",".join(nets)}')
+    at = spec.get('strip_flags_at', [])
+    if at:
+        text, n = strip_flags_at(text, at)
+        notes.append(f'stripped {n} flag(s) by position')
     units = spec.get('units', {})
     if units:
         text, n = apply_units(text, units)
@@ -390,6 +350,11 @@ def check_lock(lock, root, verbose=True):
             r = re.search(r'\(property "Reference" "([^"]+)"', blk)
             l = re.search(r'\(lib_id "([^"]+)"', blk)
             if r and l: parts.setdefault(r.group(1), l.group(1).split(':')[-1])
+        for xy in spec.get('transform', {}).get('strip_flags_at', []):
+            pos = (round(float(xy[0]), 2), round(float(xy[1]), 2))
+            if pos not in flags_at(text):
+                errors.append(f'{name}: strip_flags_at names {list(pos)} but there is no '
+                              f'PWR_FLAG there; the coordinate has gone stale')
         slotmap = spec.get('transform', {}).get('units', {})
         if slotmap:
             srcs = sorted(slotmap); dsts = sorted(slotmap.values())
